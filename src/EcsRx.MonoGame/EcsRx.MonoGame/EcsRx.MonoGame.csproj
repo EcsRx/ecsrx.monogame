@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="EcsRx" Version="1.2.3" />
+      <PackageReference Include="EcsRx.Infrastructure" Version="1.2.3" />
+      <PackageReference Include="EcsRx.Infrastructure.Ninject" Version="1.2.3" />
+      <PackageReference Include="EcsRx.MicroRx" Version="1.2.3" />
+      <PackageReference Include="EcsRx.ReactiveData" Version="1.2.3" />
+      <PackageReference Include="EcsRx.Systems" Version="1.2.3" />
+      <PackageReference Include="EcsRx.Views" Version="1.2.3" />
+      <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.7.0.7" />
+      <PackageReference Include="Ninject" Version="3.3.4" />
+    </ItemGroup>
+
+</Project>
