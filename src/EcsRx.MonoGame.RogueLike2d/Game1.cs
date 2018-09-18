@@ -8,6 +8,7 @@ namespace EcsRx.MonoGame.RogueLike2d
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        private Texture2D ship;
 
         public Game1()
         {
@@ -26,6 +27,7 @@ namespace EcsRx.MonoGame.RogueLike2d
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            ship = Content.Load<Texture2D>("ship");
 
             // TODO: use this.Content to load your game content here
         }
@@ -44,6 +46,9 @@ namespace EcsRx.MonoGame.RogueLike2d
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            spriteBatch.Begin();
+            spriteBatch.Draw(ship, new Vector2(100,100));
+            spriteBatch.End();
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);

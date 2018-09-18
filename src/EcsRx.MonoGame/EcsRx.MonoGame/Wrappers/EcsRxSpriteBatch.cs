@@ -2,9 +2,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace EcsRx.MonoGame.Wrappers
 {
-    public class EcsRxSpriteBatch : SpriteBatch, ISpriteBatch
+    public class EcsRxEcsRxSpriteBatch : SpriteBatch, IEcsRxSpriteBatch
     {
-        public EcsRxSpriteBatch(GraphicsDevice graphicsDevice) : base(graphicsDevice)
+        public EcsRxEcsRxSpriteBatch(GraphicsDevice graphicsDevice) : base(graphicsDevice)
         {}
     }
 }

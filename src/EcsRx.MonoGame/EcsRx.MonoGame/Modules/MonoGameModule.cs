@@ -1,22 +1,29 @@
+using EcsRx.Executor.Handlers;
 using EcsRx.Infrastructure.Dependencies;
 using EcsRx.Infrastructure.Extensions;
+using EcsRx.MonoGame.Systems.Handlers;
 using EcsRx.MonoGame.Wrappers;
+using EcsRx.Systems.Handlers;
 
 namespace EcsRx.MonoGame.Modules
 {
     public class MonoGameModule : IDependencyModule
     {
-        private readonly IGame _game;
+        private readonly IEcsRxGame _ecsRxGame;
         
-        public MonoGameModule(IGame game)
-        { _game = game; }
+        public MonoGameModule(IEcsRxGame ecsRxGame)
+        { _ecsRxGame = ecsRxGame; }
 
         public void Setup(IDependencyContainer container)
         {
-            container.Bind<IGame>(x => x.ToInstance(_game));
-            container.Bind<IGameScheduler>(x => x.ToInstance(_game));
-            container.Bind<ISpriteBatch>(x => x.ToInstance(_game.SpriteBatch));
-            container.Bind<IGraphicsDeviceManager>(x => x.ToInstance(_game.GraphicsDeviceManager as EcsRxGraphicsDeviceManager));
+            container.Bind<IEcsRxGame>(x => x.ToInstance(_ecsRxGame));
+            container.Bind<IGameScheduler>(x => x.ToInstance(_ecsRxGame));
+            container.Bind<IEcsRxContentManager>(x => x.ToInstance(_ecsRxGame.EcsRxContentManager));
+            container.Bind<IEcsRxSpriteBatch>(x => x.ToInstance(_ecsRxGame.EcsRxSpriteBatch));
+            container.Bind<IEcsRxGraphicsDeviceManager>(x => x.ToInstance(_ecsRxGame.EcsRxGraphicsDeviceManager));
+            container.Bind<IEcsRxGraphicsDevice>(x => x.ToInstance(_ecsRxGame.EcsRxGraphicsDevice));
+            
+            container.Bind<IConventionalSystemHandler, SpriteBatchSystemHandler>();
         }
     }
 }

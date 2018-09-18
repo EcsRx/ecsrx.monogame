@@ -3,25 +3,24 @@ using Microsoft.Xna.Framework.Content;
 
 namespace EcsRx.MonoGame.Wrappers
 {
-    public class EcsRxContentManager : IContentManager
+    public class EcsRxEcsRxContentManager : IEcsRxContentManager
     {
-        private readonly ContentManager _internalManager;
-
-        public EcsRxContentManager(ContentManager internalManager)
-        { _internalManager = internalManager; }
+        public EcsRxEcsRxContentManager(ContentManager internalManager)
+        { InternalManager = internalManager; }
 
 
-        public void Dispose() =>_internalManager.Dispose();
-        public T LoadLocalized<T>(string assetName) => _internalManager.LoadLocalized<T>(assetName);
-        public T Load<T>(string assetName) => _internalManager.Load<T>(assetName);
-        public void Unload() => _internalManager.Unload();
+        public ContentManager InternalManager { get; }
+        public void Dispose() =>InternalManager.Dispose();
+        public T LoadLocalized<T>(string assetName) => InternalManager.LoadLocalized<T>(assetName);
+        public T Load<T>(string assetName) => InternalManager.Load<T>(assetName);
+        public void Unload() => InternalManager.Unload();
 
         public string RootDirectory
         {
-            get => _internalManager.RootDirectory;
-            set => _internalManager.RootDirectory = value;
+            get => InternalManager.RootDirectory;
+            set => InternalManager.RootDirectory = value;
         }
 
-        public IServiceProvider ServiceProvider => _internalManager.ServiceProvider;
+        public IServiceProvider ServiceProvider => InternalManager.ServiceProvider;
     }
 }

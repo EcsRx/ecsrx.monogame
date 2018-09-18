@@ -7,5 +7,6 @@ namespace EcsRx.MonoGame
     {
         IObservable<GameTime> EveryUpdate { get; }
         IObservable<GameTime> EveryRender { get; }
+        GameTime GameTime { get; }
     }
 }

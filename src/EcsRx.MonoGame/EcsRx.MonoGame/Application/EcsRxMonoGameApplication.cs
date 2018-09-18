@@ -1,27 +1,38 @@
-﻿using EcsRx.Infrastructure;
+﻿using System;
+using System.Reactive.Linq;
+using EcsRx.Infrastructure;
 using EcsRx.Infrastructure.Dependencies;
 using EcsRx.Infrastructure.Ninject;
-using EcsRx.MicroRx.Extensions;
 using EcsRx.MonoGame.Modules;
+using EcsRx.MonoGame.Wrappers;
 
 namespace EcsRx.MonoGame
 {
-    public abstract class EcsRxMonoGameApplication : EcsRxApplication
+    public abstract class EcsRxMonoGameApplication : EcsRxApplication, IDisposable
     {
         protected override IDependencyContainer DependencyContainer { get; } = new NinjectDependencyContainer();
-        
-        public IGame Game { get; }
+        public IDependencyContainer DIContainer => DependencyContainer;
+
+        protected IEcsRxGame EcsRxGame { get; }
+        protected IEcsRxContentManager EcsRxContentManager => EcsRxGame.EcsRxContentManager;
+        protected IEcsRxGraphicsDeviceManager DeviceManager => EcsRxGame.EcsRxGraphicsDeviceManager;
 
         public EcsRxMonoGameApplication()
         {
-            Game = new EcsRxGame();
-            Game.GameLoading.Subscribe(x => StartApplication());
+            EcsRxGame = new EcsRxEcsRxGame();
+            EcsRxGame.GameLoading.FirstAsync().Subscribe(x => StartApplication());
+            EcsRxGame.Run();
         }
 
         protected override void RegisterModules()
         {
+            DependencyContainer.LoadModule(new MonoGameModule(EcsRxGame));
             base.RegisterModules();
-            DependencyContainer.LoadModule(new MonoGameModule(Game));
+        }
+
+        public void Dispose()
+        {
+            EcsRxGame.Dispose();
         }
     }
 }

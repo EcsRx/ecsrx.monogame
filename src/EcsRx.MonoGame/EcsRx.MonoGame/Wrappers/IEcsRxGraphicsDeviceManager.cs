@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace EcsRx.MonoGame.Wrappers
 {
-    public interface IGraphicsDeviceManager
+    public interface IEcsRxGraphicsDeviceManager
     {
         bool BeginDraw();
         void EndDraw();
