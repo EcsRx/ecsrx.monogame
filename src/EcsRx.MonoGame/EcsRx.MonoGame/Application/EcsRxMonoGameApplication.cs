@@ -18,7 +18,7 @@ namespace EcsRx.MonoGame
 
         public EcsRxMonoGameApplication()
         {
-            EcsRxGame = new EcsRxEcsRxGame();
+            EcsRxGame = new EcsRxGame();
             EcsRxGame.GameLoading.FirstAsync().Subscribe(x => StartApplication());
             EcsRxGame.Run();
         }

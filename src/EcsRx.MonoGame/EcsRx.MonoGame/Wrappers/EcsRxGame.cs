@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace EcsRx.MonoGame
 {
-    public class EcsRxEcsRxGame : Game, IEcsRxGame
+    public class EcsRxGame : Game, IEcsRxGame
     {
         private readonly Subject<GameTime> _everyUpdate, _everyRender;
         private readonly Subject<Unit> _gameLoading;
@@ -23,7 +23,7 @@ namespace EcsRx.MonoGame
         public IEcsRxContentManager EcsRxContentManager { get; }
         public GameTime GameTime { get; private set; }
         
-        public EcsRxEcsRxGame()
+        public EcsRxGame()
         {
             _everyUpdate = new Subject<GameTime>();
             _everyRender = new Subject<GameTime>();

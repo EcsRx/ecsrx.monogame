@@ -3,6 +3,7 @@ using EcsRx.Entities;
 using EcsRx.Extensions;
 using EcsRx.Groups;
 using EcsRx.MonoGame.Components;
+using EcsRx.MonoGame.Extensions;
 using EcsRx.MonoGame.RogueLike2d.Components;
 using EcsRx.MonoGame.RogueLike2d.Groups;
 using EcsRx.MonoGame.Wrappers;
@@ -27,7 +28,7 @@ namespace EcsRx.MonoGame.RogueLike2d.Systems
             spriteComponent.Sprite = ContentManager.Load<Texture2D>("ship");
 
             var viewComponent = entity.GetComponent<ViewComponent2D>();
-            viewComponent.Transform.Position = new Vector2(100, 100);
+            viewComponent.GetTransform().Position = new Vector2(100, 100);
 
             var movableComponent = entity.GetComponent<MoveableComponent>();
             movableComponent.MovementSpeed = 100.0f;

@@ -5,6 +5,7 @@ using EcsRx.Extensions;
 using EcsRx.Groups;
 using EcsRx.Groups.Observable;
 using EcsRx.MonoGame.Components;
+using EcsRx.MonoGame.Extensions;
 using EcsRx.MonoGame.RogueLike2d.Components;
 using EcsRx.Systems;
 using Microsoft.Xna.Framework;
@@ -48,7 +49,7 @@ namespace EcsRx.MonoGame.RogueLike2d.Systems
             var movementSpeed = moveableComponent.MovementSpeed * (float)_gameScheduler.GameTime.ElapsedGameTime.TotalSeconds;
 
             var viewComponent = entity.GetComponent<ViewComponent2D>();
-            viewComponent.Transform.Position += movementChange * movementSpeed;
+            viewComponent.GetTransform().Position += movementChange * movementSpeed;
         }
     }
 }
