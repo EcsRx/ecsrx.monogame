@@ -29,9 +29,9 @@ namespace EcsRx.MonoGame
             _everyRender = new Subject<GameTime>();
             _gameLoading = new Subject<Unit>();
             
-            EcsRxGraphicsDeviceManager = new EcsRxEcsRxGraphicsDeviceManager(this);
+            EcsRxGraphicsDeviceManager = new EcsRxGraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            EcsRxContentManager = new EcsRxEcsRxContentManager(Content);
+            EcsRxContentManager = new EcsRxContentManager(Content);
             IsMouseVisible = true;
 
             GameUnloading = Observable.FromEventPattern<EventArgs>(x => Exiting += x, x => Exiting -= x)
@@ -42,7 +42,7 @@ namespace EcsRx.MonoGame
         protected override void LoadContent()
         {
             EcsRxGraphicsDevice = new EcsRxGraphicsDevice(GraphicsDevice);
-            EcsRxSpriteBatch = new EcsRxEcsRxSpriteBatch(GraphicsDevice);
+            EcsRxSpriteBatch = new EcsRxSpriteBatch(GraphicsDevice);
             base.LoadContent();
             _gameLoading.OnNext(Unit.Default);
         }

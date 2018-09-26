@@ -3,9 +3,9 @@ using Microsoft.Xna.Framework.Content;
 
 namespace EcsRx.MonoGame.Wrappers
 {
-    public class EcsRxEcsRxContentManager : IEcsRxContentManager
+    public class EcsRxContentManager : IEcsRxContentManager
     {
-        public EcsRxEcsRxContentManager(ContentManager internalManager)
+        public EcsRxContentManager(ContentManager internalManager)
         { InternalManager = internalManager; }
 
 
