@@ -2,10 +2,9 @@
 using System.Reactive;
 using System.Reactive.Linq;
 using EcsRx.MicroRx.Subjects;
-using EcsRx.MonoGame.Wrappers;
 using Microsoft.Xna.Framework;
 
-namespace EcsRx.MonoGame
+namespace EcsRx.MonoGame.Wrappers
 {
     public class EcsRxGame : Game, IEcsRxGame
     {

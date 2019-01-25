@@ -5,8 +5,11 @@ using EcsRx.Infrastructure.Dependencies;
 using EcsRx.Infrastructure.Ninject;
 using EcsRx.MonoGame.Modules;
 using EcsRx.MonoGame.Wrappers;
+using EcsRx.Plugins.ReactiveSystems;
+using EcsRx.Plugins.Views;
+using EcsRx.Plugins.Views.Extensions;
 
-namespace EcsRx.MonoGame
+namespace EcsRx.MonoGame.Application
 {
     public abstract class EcsRxMonoGameApplication : EcsRxApplication, IDisposable
     {
@@ -21,6 +24,15 @@ namespace EcsRx.MonoGame
             EcsRxGame = new EcsRxGame();
             EcsRxGame.GameLoading.FirstAsync().Subscribe(x => StartApplication());
             EcsRxGame.Run();
+        }
+
+        protected override void StartSystems()
+        { this.StartAllBoundViewSystems(); }
+
+        protected override void LoadPlugins()
+        {
+            RegisterPlugin(new ReactiveSystemsPlugin());
+            RegisterPlugin(new ViewsPlugin());
         }
 
         protected override void LoadModules()

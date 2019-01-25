@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using EcsRx.Extensions;
 using EcsRx.Groups;
 using EcsRx.Groups.Observable;
+using EcsRx.MonoGame.Wrappers;
 using EcsRx.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace EcsRx.MonoGame.RogueLike2d.Systems
+namespace EcsRx.MonoGame.RogueLike2d.Game.Systems
 {
     public class LifecycleManagementSystem : IManualSystem
     {

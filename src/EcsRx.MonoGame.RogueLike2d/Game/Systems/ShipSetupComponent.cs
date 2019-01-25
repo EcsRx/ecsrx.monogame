@@ -1,17 +1,16 @@
-using EcsRx.Attributes;
 using EcsRx.Entities;
 using EcsRx.Extensions;
 using EcsRx.Groups;
 using EcsRx.MonoGame.Components;
 using EcsRx.MonoGame.Extensions;
-using EcsRx.MonoGame.RogueLike2d.Components;
+using EcsRx.MonoGame.RogueLike2d.Game.Components;
 using EcsRx.MonoGame.RogueLike2d.Groups;
 using EcsRx.MonoGame.Wrappers;
-using EcsRx.Systems;
+using EcsRx.Plugins.ReactiveSystems.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace EcsRx.MonoGame.RogueLike2d.Systems
+namespace EcsRx.MonoGame.RogueLike2d.Game.Systems
 {
     public class ShipSetupComponent : ISetupSystem
     {

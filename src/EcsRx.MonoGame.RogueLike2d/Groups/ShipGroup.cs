@@ -1,7 +1,7 @@
 using System;
 using EcsRx.Groups;
 using EcsRx.MonoGame.Components;
-using EcsRx.MonoGame.RogueLike2d.Components;
+using EcsRx.MonoGame.RogueLike2d.Game.Components;
 
 namespace EcsRx.MonoGame.RogueLike2d.Groups
 {

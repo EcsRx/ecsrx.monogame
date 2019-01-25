@@ -7,7 +7,7 @@ using EcsRx.MonoGame.RogueLike2d.Groups;
 using EcsRx.MonoGame.Systems;
 using EcsRx.MonoGame.Wrappers;
 
-namespace EcsRx.MonoGame.RogueLike2d.Systems
+namespace EcsRx.MonoGame.RogueLike2d.Game.Systems
 {
     public class ShipDrawingSystem : SpriteBatchSystem
     {

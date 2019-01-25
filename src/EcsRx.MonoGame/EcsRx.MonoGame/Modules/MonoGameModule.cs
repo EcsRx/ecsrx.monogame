@@ -3,7 +3,6 @@ using EcsRx.Infrastructure.Dependencies;
 using EcsRx.Infrastructure.Extensions;
 using EcsRx.MonoGame.Systems.Handlers;
 using EcsRx.MonoGame.Wrappers;
-using EcsRx.Systems.Handlers;
 
 namespace EcsRx.MonoGame.Modules
 {

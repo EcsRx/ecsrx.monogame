@@ -1,8 +1,6 @@
 using EcsRx.Components;
-using EcsRx.MonoGame.Components;
-using Microsoft.Xna.Framework;
 
-namespace EcsRx.MonoGame.RogueLike2d.Components
+namespace EcsRx.MonoGame.RogueLike2d.Game.Components
 {
     public class MoveableComponent : IComponent
     {

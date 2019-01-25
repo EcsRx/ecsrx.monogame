@@ -1,5 +1,5 @@
 using EcsRx.MonoGame.Models;
-using EcsRx.Views.Components;
+using EcsRx.Plugins.Views.Components;
 
 namespace EcsRx.MonoGame.Components
 {

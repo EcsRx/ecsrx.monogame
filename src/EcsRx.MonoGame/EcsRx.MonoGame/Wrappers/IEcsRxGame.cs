@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Reactive;
-using EcsRx.MonoGame.Wrappers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace EcsRx.MonoGame
+namespace EcsRx.MonoGame.Wrappers
 {
     public interface IEcsRxGame : IGameScheduler
     {

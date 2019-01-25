@@ -6,12 +6,12 @@ using EcsRx.Groups;
 using EcsRx.Groups.Observable;
 using EcsRx.MonoGame.Components;
 using EcsRx.MonoGame.Extensions;
-using EcsRx.MonoGame.RogueLike2d.Components;
-using EcsRx.Systems;
+using EcsRx.MonoGame.RogueLike2d.Game.Components;
+using EcsRx.Plugins.ReactiveSystems.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace EcsRx.MonoGame.RogueLike2d.Systems
+namespace EcsRx.MonoGame.RogueLike2d.Game.Systems
 {
     public class MovementSystem : IReactToGroupSystem
     {
