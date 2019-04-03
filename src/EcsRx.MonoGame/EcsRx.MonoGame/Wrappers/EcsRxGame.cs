@@ -71,6 +71,8 @@ namespace EcsRx.MonoGame.Wrappers
             base.Dispose(disposing);
             _onUpdate.Dispose();
             _onRender.Dispose();
+            _onPreRender.Dispose();
+            _onPostRender.Dispose();
             _gameLoading.Dispose();
         }
 
