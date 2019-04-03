@@ -8,11 +8,13 @@ namespace EcsRx.MonoGame.Wrappers
 {
     public class EcsRxGame : Game, IEcsRxGame
     {
-        private readonly Subject<TimeSpan> _everyUpdate, _everyRender;
+        private readonly Subject<TimeSpan> _onUpdate, _onRender, _onPreRender, _onPostRender;
         private readonly Subject<Unit> _gameLoading;
 
-        public IObservable<TimeSpan> OnUpdate => _everyUpdate;
-        public IObservable<TimeSpan> OnRender => _everyRender;
+        public IObservable<TimeSpan> OnUpdate => _onUpdate;
+        public IObservable<TimeSpan> OnRender => _onRender;
+        public IObservable<TimeSpan> OnPreRender => _onPreRender;
+        public IObservable<TimeSpan> OnPostRender => _onPostRender;
         public IObservable<Unit> GameLoading => _gameLoading;
         public IObservable<Unit> GameUnloading { get; }
         
@@ -24,8 +26,10 @@ namespace EcsRx.MonoGame.Wrappers
         
         public EcsRxGame()
         {
-            _everyUpdate = new Subject<TimeSpan>();
-            _everyRender = new Subject<TimeSpan>();
+            _onUpdate = new Subject<TimeSpan>();
+            _onRender = new Subject<TimeSpan>();
+            _onPreRender = new Subject<TimeSpan>();
+            _onPostRender = new Subject<TimeSpan>();
             _gameLoading = new Subject<Unit>();
             
             EcsRxGraphicsDeviceManager = new EcsRxGraphicsDeviceManager(this);
@@ -50,21 +54,23 @@ namespace EcsRx.MonoGame.Wrappers
         {
             base.Draw(gameTime);
             GameTime = gameTime;
-            _everyRender.OnNext(gameTime.ElapsedGameTime);
+            _onPreRender.OnNext(gameTime.ElapsedGameTime);
+            _onRender.OnNext(gameTime.ElapsedGameTime);
+            _onPostRender.OnNext(gameTime.ElapsedGameTime);
         }
 
         protected override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
             GameTime = gameTime;
-            _everyUpdate.OnNext(gameTime.ElapsedGameTime);
+            _onUpdate.OnNext(gameTime.ElapsedGameTime);
         }
         
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
-            _everyUpdate.Dispose();
-            _everyRender.Dispose();
+            _onUpdate.Dispose();
+            _onRender.Dispose();
             _gameLoading.Dispose();
         }
 

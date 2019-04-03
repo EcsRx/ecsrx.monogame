@@ -32,7 +32,7 @@ namespace EcsRx.MonoGame.RogueLike2d.Game.Systems
         public void StartSystem(IObservableGroup observableGroup)
         {
             var quitSubscriptions = _ecsRxGame.OnUpdate.Subscribe(CheckIfGameShouldQuit);
-            var clearSubscriptions = _ecsRxGame.OnRender.Subscribe(ClearScreen);
+            var clearSubscriptions = _ecsRxGame.OnPreRender.Subscribe(ClearScreen);
             _subscriptions.Add(quitSubscriptions);
             _subscriptions.Add(clearSubscriptions);
         }
