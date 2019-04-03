@@ -34,7 +34,7 @@ namespace EcsRx.MonoGame.Systems.Handlers
             var hasEntityPredicate = system.Group is IHasPredicate;
             var castSystem = (SpriteBatchSystem)system;
 
-            var drawSubscription = _gameScheduler.EveryRender.Subscribe(x =>
+            var drawSubscription = _gameScheduler.OnRender.Subscribe(x =>
             {
                 castSystem.PreDraw();
                 

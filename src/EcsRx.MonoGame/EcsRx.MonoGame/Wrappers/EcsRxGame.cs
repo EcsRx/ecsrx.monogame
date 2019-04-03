@@ -8,13 +8,13 @@ namespace EcsRx.MonoGame.Wrappers
 {
     public class EcsRxGame : Game, IEcsRxGame
     {
-        private readonly Subject<GameTime> _everyUpdate, _everyRender;
+        private readonly Subject<TimeSpan> _everyUpdate, _everyRender;
         private readonly Subject<Unit> _gameLoading;
 
-        public IObservable<GameTime> EveryUpdate => _everyUpdate;
-        public IObservable<GameTime> EveryRender => _everyRender;
+        public IObservable<TimeSpan> OnUpdate => _everyUpdate;
+        public IObservable<TimeSpan> OnRender => _everyRender;
         public IObservable<Unit> GameLoading => _gameLoading;
-        public IObservable<Unit> GameUnloading { get; protected set; }
+        public IObservable<Unit> GameUnloading { get; }
         
         public IEcsRxGraphicsDeviceManager EcsRxGraphicsDeviceManager { get; }
         public IEcsRxGraphicsDevice EcsRxGraphicsDevice { get; private set; }
@@ -24,8 +24,8 @@ namespace EcsRx.MonoGame.Wrappers
         
         public EcsRxGame()
         {
-            _everyUpdate = new Subject<GameTime>();
-            _everyRender = new Subject<GameTime>();
+            _everyUpdate = new Subject<TimeSpan>();
+            _everyRender = new Subject<TimeSpan>();
             _gameLoading = new Subject<Unit>();
             
             EcsRxGraphicsDeviceManager = new EcsRxGraphicsDeviceManager(this);
@@ -50,14 +50,14 @@ namespace EcsRx.MonoGame.Wrappers
         {
             base.Draw(gameTime);
             GameTime = gameTime;
-            _everyRender.OnNext(gameTime);
+            _everyRender.OnNext(gameTime.ElapsedGameTime);
         }
 
         protected override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
             GameTime = gameTime;
-            _everyUpdate.OnNext(gameTime);
+            _everyUpdate.OnNext(gameTime.ElapsedGameTime);
         }
         
         protected override void Dispose(bool disposing)

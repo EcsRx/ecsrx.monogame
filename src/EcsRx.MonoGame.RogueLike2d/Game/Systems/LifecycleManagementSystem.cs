@@ -20,19 +20,19 @@ namespace EcsRx.MonoGame.RogueLike2d.Game.Systems
         public LifecycleManagementSystem(IEcsRxGame ecsRxGame)
         { _ecsRxGame = ecsRxGame; }
 
-        private void CheckIfGameShouldQuit(GameTime gameTime)
+        private void CheckIfGameShouldQuit(TimeSpan elapsedTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             { _ecsRxGame.Exit(); }
         }
 
-        private void ClearScreen(GameTime gameTime)
+        private void ClearScreen(TimeSpan elapsedTime)
         { _ecsRxGame.EcsRxGraphicsDevice.Clear(Color.CornflowerBlue); }
 
         public void StartSystem(IObservableGroup observableGroup)
         {
-            var quitSubscriptions = _ecsRxGame.EveryUpdate.Subscribe(CheckIfGameShouldQuit);
-            var clearSubscriptions = _ecsRxGame.EveryRender.Subscribe(ClearScreen);
+            var quitSubscriptions = _ecsRxGame.OnUpdate.Subscribe(CheckIfGameShouldQuit);
+            var clearSubscriptions = _ecsRxGame.OnRender.Subscribe(ClearScreen);
             _subscriptions.Add(quitSubscriptions);
             _subscriptions.Add(clearSubscriptions);
         }

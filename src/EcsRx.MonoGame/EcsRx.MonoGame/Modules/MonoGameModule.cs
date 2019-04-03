@@ -1,6 +1,7 @@
 using EcsRx.Executor.Handlers;
 using EcsRx.Infrastructure.Dependencies;
 using EcsRx.Infrastructure.Extensions;
+using EcsRx.Infrastructure.Scheduling;
 using EcsRx.MonoGame.Systems.Handlers;
 using EcsRx.MonoGame.Wrappers;
 
@@ -16,7 +17,11 @@ namespace EcsRx.MonoGame.Modules
         public void Setup(IDependencyContainer container)
         {
             container.Bind<IEcsRxGame>(x => x.ToInstance(_ecsRxGame));
+
+            container.Unbind<IObservableScheduler>();
+            container.Bind<IObservableScheduler>(x => x.ToInstance(_ecsRxGame));
             container.Bind<IGameScheduler>(x => x.ToInstance(_ecsRxGame));
+            
             container.Bind<IEcsRxContentManager>(x => x.ToInstance(_ecsRxGame.EcsRxContentManager));
             container.Bind<IEcsRxSpriteBatch>(x => x.ToInstance(_ecsRxGame.EcsRxSpriteBatch));
             container.Bind<IEcsRxGraphicsDeviceManager>(x => x.ToInstance(_ecsRxGame.EcsRxGraphicsDeviceManager));

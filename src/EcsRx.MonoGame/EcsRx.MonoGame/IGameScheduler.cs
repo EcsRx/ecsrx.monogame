@@ -1,12 +1,12 @@
 ﻿using System;
+using EcsRx.Infrastructure.Scheduling;
 using Microsoft.Xna.Framework;
 
 namespace EcsRx.MonoGame
 {
-    public interface IGameScheduler
+    public interface IGameScheduler : IObservableScheduler
     {
-        IObservable<GameTime> EveryUpdate { get; }
-        IObservable<GameTime> EveryRender { get; }
+        IObservable<TimeSpan> OnRender { get; }
         GameTime GameTime { get; }
     }
 }

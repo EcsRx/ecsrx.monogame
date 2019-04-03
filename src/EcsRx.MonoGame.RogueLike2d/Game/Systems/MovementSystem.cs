@@ -25,7 +25,7 @@ namespace EcsRx.MonoGame.RogueLike2d.Game.Systems
         }
 
         public IObservable<IObservableGroup> ReactToGroup(IObservableGroup observableGroup)
-        { return _gameScheduler.EveryUpdate.Select(x => observableGroup); }
+        { return _gameScheduler.OnUpdate.Select(x => observableGroup); }
 
         public void Process(IEntity entity)
         {
