@@ -8,10 +8,12 @@ namespace EcsRx.MonoGame.Wrappers
 {
     public class EcsRxGame : Game, IEcsRxGame
     {
-        private readonly Subject<TimeSpan> _onUpdate, _onRender, _onPreRender, _onPostRender;
+        private readonly Subject<TimeSpan> _onPreUpdate, _onUpdate, _onPostUpdate, _onRender, _onPreRender, _onPostRender;
         private readonly Subject<Unit> _gameLoading;
 
         public IObservable<TimeSpan> OnUpdate => _onUpdate;
+        public IObservable<TimeSpan> OnPreUpdate => _onPreUpdate;
+        public IObservable<TimeSpan> OnPostUpdate => _onPostUpdate;
         public IObservable<TimeSpan> OnRender => _onRender;
         public IObservable<TimeSpan> OnPreRender => _onPreRender;
         public IObservable<TimeSpan> OnPostRender => _onPostRender;
@@ -26,7 +28,9 @@ namespace EcsRx.MonoGame.Wrappers
         
         public EcsRxGame()
         {
+            _onPreUpdate = new Subject<TimeSpan>();
             _onUpdate = new Subject<TimeSpan>();
+            _onPostUpdate = new Subject<TimeSpan>();
             _onRender = new Subject<TimeSpan>();
             _onPreRender = new Subject<TimeSpan>();
             _onPostRender = new Subject<TimeSpan>();
@@ -63,13 +67,17 @@ namespace EcsRx.MonoGame.Wrappers
         {
             base.Update(gameTime);
             GameTime = gameTime;
+            _onPreUpdate.OnNext(gameTime.ElapsedGameTime);
             _onUpdate.OnNext(gameTime.ElapsedGameTime);
+            _onPostUpdate.OnNext(gameTime.ElapsedGameTime);
         }
         
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
+            _onPreUpdate.Dispose();
             _onUpdate.Dispose();
+            _onPostUpdate.Dispose();
             _onRender.Dispose();
             _onPreRender.Dispose();
             _onPostRender.Dispose();
