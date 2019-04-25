@@ -7,15 +7,6 @@ This is the Monogame flavour of EcsRx!
 [![Join Discord Chat][discord-image]][discord-url]
 [![Documentation][gitbook-image]][gitbook-url]
 
-[nuget-image]: https://img.shields.io/nuget/v/ecsrx.monogame.svg
-[nuget-url]: https://www.nuget.org/packages/EcsRx/
-[discord-image]: https://img.shields.io/discord/488609938399297536.svg
-[discord-url]: https://discord.gg/bS2rnGz
-[license-image]: https://img.shields.io/github/license/ecsrx/ecsrx.monogame.svg
-[license-url]: https://github.com/EcsRx/ecsrx.monogame/blob/master/LICENSE
-[gitbook-image]: https://img.shields.io/static/v1.svg?label=Documentation&message=Read%20Now&color=Green&style=flat
-[gitbook-url]: https://ecsrx.gitbook.io/project/
-
 ## What is it?
 
 It is an ECS style framework which puts architecture, design and flexibility above most other concerns.
@@ -49,3 +40,12 @@ There is a book available which covers the main parts for the core EcsRx framewo
 Will add monogame specific documentation within this repo as time goes on, but for the moment hop on discord to know more.
 
 There is also a demo application within the `Roguelike2d` folder (its not a roguelike2d example, it is just a placeholder).
+
+[nuget-image]: https://img.shields.io/nuget/v/ecsrx.monogame.svg
+[nuget-url]: https://www.nuget.org/packages/EcsRx/
+[discord-image]: https://img.shields.io/discord/488609938399297536.svg
+[discord-url]: https://discord.gg/bS2rnGz
+[license-image]: https://img.shields.io/github/license/ecsrx/ecsrx.monogame.svg
+[license-url]: https://github.com/EcsRx/ecsrx.monogame/blob/master/LICENSE
+[gitbook-image]: https://img.shields.io/static/v1.svg?label=Documentation&message=Read%20Now&color=Green&style=flat
+[gitbook-url]: https://ecsrx.gitbook.io/project/
