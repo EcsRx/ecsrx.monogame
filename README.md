@@ -31,6 +31,14 @@ static void Main()
 
 There is still a `Game` instance under the hood, but we abstract it away, so in almost all scenarios you wont need to touch the game as you will treat the `Application` as your entry point.
 
+There are custom versions of most common monogame objects that you can inject into any of your classes, such as:
+
+- `IEcsRxContentManager`
+- `IEcsRxGame`
+- `IEcsRxGraphicsDevice`
+- `IEcsRxGraphicsDeviceManager`
+- `IEcsRxSpriteBatch`
+
 ## Docs
 
 There is a book available which covers the main parts for the core EcsRx framework which can be found here:
