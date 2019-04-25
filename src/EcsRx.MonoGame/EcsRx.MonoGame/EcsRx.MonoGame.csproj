@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="EcsRx" Version="3.4.32" />
+      <PackageReference Include="EcsRx.Infrastructure" Version="3.4.32" />
+      <PackageReference Include="EcsRx.Infrastructure.Ninject" Version="3.4.32" />
+      <PackageReference Include="EcsRx.MicroRx" Version="3.4.32" />
+      <PackageReference Include="EcsRx.Plugins.ReactiveSystems" Version="3.4.32" />
+      <PackageReference Include="EcsRx.Plugins.Views" Version="3.4.32" />
+      <PackageReference Include="EcsRx.ReactiveData" Version="3.4.32" />
+      <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.7.0.7" />
+      <PackageReference Include="Ninject" Version="3.3.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="System.Reactive, Version=4.1.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263">
+        <HintPath>..\..\..\..\..\..\Users\leepr\.nuget\packages\system.reactive\4.1.0\lib\netstandard2.0\System.Reactive.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>
