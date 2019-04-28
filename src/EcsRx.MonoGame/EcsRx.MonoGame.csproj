@@ -2,6 +2,14 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <Version>0.0.0</Version>
+        <Title>EcsRx.MonoGame</Title>
+        <Authors>Grofit (LP)</Authors>
+        <PackageLicenseUrl>https://github.com/ecsrx/ecsrx.monogame/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/ecsrx/ecsrx.monogame</PackageProjectUrl>
+        <Description>A reactive take on the ECS pattern for monogame developers</Description>
+        <PackageTags>ecs rx reactive patterns ioc game-development xna monogame</PackageTags>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -15,11 +23,5 @@
       <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.7.0.7" />
       <PackageReference Include="Ninject" Version="3.3.4" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Reference Include="System.Reactive, Version=4.1.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263">
-        <HintPath>..\..\..\..\..\..\Users\leepr\.nuget\packages\system.reactive\4.1.0\lib\netstandard2.0\System.Reactive.dll</HintPath>
-      </Reference>
-    </ItemGroup>
-
+	
 </Project>
