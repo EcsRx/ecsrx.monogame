@@ -16,7 +16,7 @@ dotnet_csproj:
 before_build:
 - cmd: nuget restore src/EcsRx.MonoGame.sln
 build:
-  project: src/EcsRx.MonoGame/EcsRx.MonoGame.csproj
+  project: src/EcsRx.MonoGame.sln
   publish_nuget: true
   verbosity: minimal
 artifacts:
