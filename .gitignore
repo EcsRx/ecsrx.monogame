@@ -8,3 +8,4 @@ packages/
 *.nupkg
 /src/.vs
 /src/EcsRx.PerformanceTests/BenchmarkDotNet.Artifacts
+/_dist

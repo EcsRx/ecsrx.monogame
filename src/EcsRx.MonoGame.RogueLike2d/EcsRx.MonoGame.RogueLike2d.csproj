@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EcsRx.MonoGame\EcsRx.MonoGame\EcsRx.MonoGame.csproj" />
+    <ProjectReference Include="..\EcsRx.MonoGame\EcsRx.MonoGame.csproj" />
   </ItemGroup>
 
 </Project>

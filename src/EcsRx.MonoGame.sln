@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcsRx.MonoGame", "EcsRx.MonoGame\EcsRx.MonoGame.csproj", "{8522D77D-CDD7-49CB-9F5D-201D84F9F5DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcsRx.MonoGame", "EcsRx.MonoGame/EcsRx.MonoGame.csproj", "{8522D77D-CDD7-49CB-9F5D-201D84F9F5DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcsRx.MonoGame.RogueLike2d", "..\EcsRx.MonoGame.RogueLike2d\EcsRx.MonoGame.RogueLike2d.csproj", "{D977C485-BE9D-40C4-A01A-DAFD9EC70475}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcsRx.MonoGame.RogueLike2d", "EcsRx.MonoGame.RogueLike2d\EcsRx.MonoGame.RogueLike2d.csproj", "{D977C485-BE9D-40C4-A01A-DAFD9EC70475}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
