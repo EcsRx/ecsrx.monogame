@@ -6,6 +6,7 @@ using EcsRx.MonoGame.Extensions;
 using EcsRx.MonoGame.RogueLike2d.Groups;
 using EcsRx.MonoGame.Systems;
 using EcsRx.MonoGame.Wrappers;
+using Microsoft.Xna.Framework;
 
 namespace EcsRx.MonoGame.RogueLike2d.Game.Systems
 {
@@ -20,7 +21,7 @@ namespace EcsRx.MonoGame.RogueLike2d.Game.Systems
         {
             var spriteComponent = entity.GetComponent<SpriteComponent>();
             var viewComponent = entity.GetComponent<ViewComponent2D>();
-            EcsRxSpriteBatch.Draw(spriteComponent.Sprite, viewComponent.GetTransform().Position);
+            EcsRxSpriteBatch.Draw(spriteComponent.Sprite, viewComponent.GetTransform().Position, Color.White);
         }
     }
 }

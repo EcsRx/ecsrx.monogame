@@ -1,10 +1,10 @@
 using EcsRx.Executor.Handlers;
 using EcsRx.Infrastructure.Dependencies;
 using EcsRx.Infrastructure.Extensions;
-using EcsRx.Infrastructure.Scheduling;
 using EcsRx.MonoGame.Rendering;
 using EcsRx.MonoGame.Systems.Handlers;
 using EcsRx.MonoGame.Wrappers;
+using EcsRx.Scheduling;
 
 namespace EcsRx.MonoGame.Modules
 {

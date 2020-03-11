@@ -1,19 +1,16 @@
-using System;
-using System.Reactive.Linq;
 using EcsRx.Entities;
 using EcsRx.Extensions;
 using EcsRx.Groups;
-using EcsRx.Groups.Observable;
 using EcsRx.MonoGame.Components;
 using EcsRx.MonoGame.Extensions;
 using EcsRx.MonoGame.RogueLike2d.Game.Components;
-using EcsRx.Plugins.ReactiveSystems.Systems;
+using EcsRx.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace EcsRx.MonoGame.RogueLike2d.Game.Systems
 {
-    public class MovementSystem : IReactToGroupSystem
+    public class MovementSystem : IBasicSystem
     {
         public IGroup Group { get; } = new Group(typeof(MoveableComponent), typeof(ViewComponent2D));
 
@@ -23,9 +20,6 @@ namespace EcsRx.MonoGame.RogueLike2d.Game.Systems
         {
             _gameScheduler = gameScheduler;
         }
-
-        public IObservable<IObservableGroup> ReactToGroup(IObservableGroup observableGroup)
-        { return _gameScheduler.OnUpdate.Select(x => observableGroup); }
 
         public void Process(IEntity entity)
         {

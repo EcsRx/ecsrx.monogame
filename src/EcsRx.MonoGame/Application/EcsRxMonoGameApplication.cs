@@ -37,8 +37,8 @@ namespace EcsRx.MonoGame.Application
 
         protected override void LoadModules()
         {
-            Container.LoadModule(new MonoGameModule(EcsRxGame));
             base.LoadModules();
+            Container.LoadModule(new MonoGameModule(EcsRxGame));
         }
         
         public void Dispose()
