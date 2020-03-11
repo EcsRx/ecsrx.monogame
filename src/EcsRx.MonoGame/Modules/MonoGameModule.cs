@@ -19,8 +19,8 @@ namespace EcsRx.MonoGame.Modules
         {
             container.Bind<IEcsRxGame>(x => x.ToInstance(_ecsRxGame));
 
-            container.Unbind<IObservableScheduler>();
-            container.Bind<IObservableScheduler>(x => x.ToInstance(_ecsRxGame));
+            container.Unbind<IUpdateScheduler>();
+            container.Bind<IUpdateScheduler>(x => x.ToInstance(_ecsRxGame));
             container.Bind<IGameScheduler>(x => x.ToInstance(_ecsRxGame));
             
             container.Bind<IEcsRxContentManager>(x => x.ToInstance(_ecsRxGame.EcsRxContentManager));

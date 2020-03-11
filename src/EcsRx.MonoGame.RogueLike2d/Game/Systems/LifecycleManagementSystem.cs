@@ -4,6 +4,7 @@ using EcsRx.Extensions;
 using EcsRx.Groups;
 using EcsRx.Groups.Observable;
 using EcsRx.MonoGame.Wrappers;
+using EcsRx.Scheduling;
 using EcsRx.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -20,13 +21,14 @@ namespace EcsRx.MonoGame.RogueLike2d.Game.Systems
         public LifecycleManagementSystem(IEcsRxGame ecsRxGame)
         { _ecsRxGame = ecsRxGame; }
 
-        private void CheckIfGameShouldQuit(TimeSpan elapsedTime)
+        private void CheckIfGameShouldQuit(ElapsedTime elapsedTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || 
+                Keyboard.GetState().IsKeyDown(Keys.Escape))
             { _ecsRxGame.Exit(); }
         }
 
-        private void ClearScreen(TimeSpan elapsedTime)
+        private void ClearScreen(ElapsedTime elapsedTime)
         { _ecsRxGame.EcsRxGraphicsDevice.Clear(Color.CornflowerBlue); }
 
         public void StartSystem(IObservableGroup observableGroup)
