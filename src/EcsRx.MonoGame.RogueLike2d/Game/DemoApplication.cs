@@ -7,7 +7,7 @@ namespace EcsRx.MonoGame.RogueLike2d.Game
     {
         protected override void ApplicationStarted()
         {
-            var defaultCollection = EntityCollectionManager.GetCollection();
+            var defaultCollection = EntityDatabase.GetCollection();
 
             var shipEntity = defaultCollection.CreateEntity(new ShipBlueprint());
         }

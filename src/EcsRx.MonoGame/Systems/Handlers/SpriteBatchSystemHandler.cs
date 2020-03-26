@@ -18,15 +18,15 @@ namespace EcsRx.MonoGame.Systems.Handlers
     [Priority(6)]
     public class SpriteBatchSystemHandler : IConventionalSystemHandler
     {
-        public readonly IEntityCollectionManager EntityCollectionManager;       
+        public readonly IObservableGroupManager ObservableGroupManager;       
         public readonly IDictionary<ISystem, IDisposable> _systemSubscriptions;
         public readonly IGameScheduler _gameScheduler;
         public readonly IEcsRxGraphicsDevice _graphicsDevice;
         public readonly IRenderTarget2dRegistry _renderTarget2dRegistry;
         
-        public SpriteBatchSystemHandler(IEntityCollectionManager entityCollectionManager, IEcsRxGraphicsDevice graphicsDevice, IRenderTarget2dRegistry renderTarget2dRegistry, IGameScheduler scheduler)
+        public SpriteBatchSystemHandler(IObservableGroupManager observableGroupManager, IEcsRxGraphicsDevice graphicsDevice, IRenderTarget2dRegistry renderTarget2dRegistry, IGameScheduler scheduler)
         {
-            EntityCollectionManager = entityCollectionManager;
+            ObservableGroupManager = observableGroupManager;
             _systemSubscriptions = new Dictionary<ISystem, IDisposable>();
             _graphicsDevice = graphicsDevice;
             _gameScheduler = scheduler;
@@ -38,7 +38,7 @@ namespace EcsRx.MonoGame.Systems.Handlers
        
         public void SetupSystem(ISystem system)
         {
-            var observableGroup = EntityCollectionManager.GetObservableGroup(system.Group);
+            var observableGroup = ObservableGroupManager.GetObservableGroup(system.Group);
             var hasEntityPredicate = system.Group is IHasPredicate;
             var castSystem = (SpriteBatchSystem)system;
             var renderTargetId = castSystem.GetRenderTexture2dId();
