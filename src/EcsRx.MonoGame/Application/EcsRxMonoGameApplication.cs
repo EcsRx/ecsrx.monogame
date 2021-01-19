@@ -22,9 +22,18 @@ namespace EcsRx.MonoGame.Application
         public EcsRxMonoGameApplication()
         {
             EcsRxGame = new EcsRxGame();
+            StartGame();
+        }
+
+        protected void StartGame()
+        {
+            BeforeGameStarted();
             EcsRxGame.GameLoading.FirstAsync().Subscribe(x => StartApplication());
             EcsRxGame.Run();
         }
+
+        protected virtual void BeforeGameStarted()
+        {}
 
         protected override void StartSystems()
         { this.StartAllBoundViewSystems(); }
