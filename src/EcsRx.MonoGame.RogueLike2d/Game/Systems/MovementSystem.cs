@@ -1,17 +1,18 @@
+using SystemsRx.Scheduling;
+using SystemsRx.Systems.Conventional;
 using EcsRx.Entities;
 using EcsRx.Extensions;
 using EcsRx.Groups;
 using EcsRx.MonoGame.Components;
 using EcsRx.MonoGame.Extensions;
 using EcsRx.MonoGame.RogueLike2d.Game.Components;
-using EcsRx.Scheduling;
 using EcsRx.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace EcsRx.MonoGame.RogueLike2d.Game.Systems
 {
-    public class MovementSystem : IBasicSystem
+    public class MovementSystem : IBasicEntitySystem
     {
         public IGroup Group { get; } = new Group(typeof(MoveableComponent), typeof(ViewComponent2D));
 

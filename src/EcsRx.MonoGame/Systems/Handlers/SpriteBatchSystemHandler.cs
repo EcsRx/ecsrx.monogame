@@ -1,17 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using EcsRx.Attributes;
+using SystemsRx.Attributes;
+using SystemsRx.Executor.Handlers;
+using SystemsRx.Extensions;
+using SystemsRx.Systems;
 using EcsRx.Collections;
 using EcsRx.Entities;
-using EcsRx.Executor.Handlers;
-using EcsRx.Extensions;
 using EcsRx.Groups;
 using EcsRx.MonoGame.Extensions;
 using EcsRx.MonoGame.Rendering;
 using EcsRx.MonoGame.Wrappers;
-using EcsRx.Systems;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace EcsRx.MonoGame.Systems.Handlers
 {   
@@ -38,9 +37,9 @@ namespace EcsRx.MonoGame.Systems.Handlers
        
         public void SetupSystem(ISystem system)
         {
-            var observableGroup = ObservableGroupManager.GetObservableGroup(system.Group);
-            var hasEntityPredicate = system.Group is IHasPredicate;
             var castSystem = (SpriteBatchSystem)system;
+            var observableGroup = ObservableGroupManager.GetObservableGroup(castSystem.Group);
+            var hasEntityPredicate = castSystem.Group is IHasPredicate;
             var renderTargetId = castSystem.GetRenderTexture2dId();
             var currentRenderTargets = _graphicsDevice.GetRenderTargets();
 
@@ -58,7 +57,7 @@ namespace EcsRx.MonoGame.Systems.Handlers
                 { ExecuteForGroup(observableGroup, castSystem); }
                 else
                 {
-                    var groupPredicate = system.Group as IHasPredicate;
+                    var groupPredicate = castSystem.Group as IHasPredicate;
                     ExecuteForGroup(observableGroup.Where(groupPredicate.CanProcessEntity), castSystem);
                 }
                 

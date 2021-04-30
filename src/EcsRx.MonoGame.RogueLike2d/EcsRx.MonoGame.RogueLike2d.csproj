@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EcsRx.Plugins.ReactiveSystems" Version="3.11.68" />
-    <PackageReference Include="EcsRx.Plugins.Views" Version="3.11.68" />
+    <PackageReference Include="EcsRx.Plugins.ReactiveSystems" Version="4.0.80" />
+    <PackageReference Include="EcsRx.Plugins.Views" Version="4.0.80" />
     <PackageReference Include="MonoGame.Content.Builder" Version="3.7.0.9" />
     <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.8.0.2" />
     <PackageReference Include="System.Reactive" Version="4.3.2" />

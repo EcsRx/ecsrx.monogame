@@ -5,7 +5,7 @@ using EcsRx.Systems;
 
 namespace EcsRx.MonoGame.Systems
 {
-    public abstract class SpriteBatchSystem : ISystem
+    public abstract class SpriteBatchSystem : IGroupSystem
     {
         public abstract IGroup Group { get; }
         

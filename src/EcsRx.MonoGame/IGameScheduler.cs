@@ -1,5 +1,5 @@
 ﻿using System;
-using EcsRx.Scheduling;
+using SystemsRx.Scheduling;
 
 namespace EcsRx.MonoGame
 {

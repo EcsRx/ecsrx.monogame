@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Reactive;
 using System.Reactive.Linq;
+using SystemsRx.Scheduling;
 using EcsRx.MicroRx.Subjects;
-using EcsRx.Scheduling;
 using Microsoft.Xna.Framework;
 
 namespace EcsRx.MonoGame.Wrappers
