@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
-using EcsRx.Extensions;
-using EcsRx.Groups;
-using EcsRx.Groups.Observable;
+using SystemsRx.Extensions;
+using SystemsRx.Scheduling;
+using SystemsRx.Systems.Conventional;
 using EcsRx.MonoGame.Wrappers;
-using EcsRx.Scheduling;
-using EcsRx.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -13,8 +11,6 @@ namespace EcsRx.MonoGame.RogueLike2d.Game.Systems
 {
     public class LifecycleManagementSystem : IManualSystem
     {
-        public IGroup Group { get; } = new EmptyGroup();
-
         private readonly IEcsRxGame _ecsRxGame;
         private readonly List<IDisposable> _subscriptions = new List<IDisposable>();
 
@@ -31,7 +27,7 @@ namespace EcsRx.MonoGame.RogueLike2d.Game.Systems
         private void ClearScreen(ElapsedTime elapsedTime)
         { _ecsRxGame.EcsRxGraphicsDevice.Clear(Color.CornflowerBlue); }
 
-        public void StartSystem(IObservableGroup observableGroup)
+        public void StartSystem()
         {
             var quitSubscriptions = _ecsRxGame.OnUpdate.Subscribe(CheckIfGameShouldQuit);
             var clearSubscriptions = _ecsRxGame.OnPreRender.Subscribe(ClearScreen);
@@ -39,7 +35,7 @@ namespace EcsRx.MonoGame.RogueLike2d.Game.Systems
             _subscriptions.Add(clearSubscriptions);
         }
 
-        public void StopSystem(IObservableGroup observableGroup)
+        public void StopSystem()
         {
             _subscriptions.DisposeAll();
             _subscriptions.Clear();

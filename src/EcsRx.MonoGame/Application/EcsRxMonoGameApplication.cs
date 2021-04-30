@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reactive.Linq;
+using SystemsRx.Infrastructure.Dependencies;
 using EcsRx.Infrastructure;
-using EcsRx.Infrastructure.Dependencies;
 using EcsRx.Infrastructure.Ninject;
 using EcsRx.MonoGame.Modules;
 using EcsRx.MonoGame.Wrappers;
