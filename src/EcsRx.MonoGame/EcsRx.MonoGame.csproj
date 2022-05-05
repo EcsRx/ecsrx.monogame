@@ -13,14 +13,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="EcsRx" Version="4.0.80" />
-      <PackageReference Include="EcsRx.Infrastructure" Version="4.0.80" />
-      <PackageReference Include="EcsRx.Infrastructure.Ninject" Version="4.0.80" />
-      <PackageReference Include="EcsRx.Plugins.ReactiveSystems" Version="4.0.80" />
-      <PackageReference Include="EcsRx.Plugins.Views" Version="4.0.80" />
-      <PackageReference Include="EcsRx.ReactiveData" Version="4.0.80" />
+      <PackageReference Include="EcsRx" Version="6.0.131" />
+      <PackageReference Include="EcsRx.Infrastructure" Version="6.0.131" />
+      <PackageReference Include="EcsRx.Infrastructure.Ninject" Version="4.1.97" />
+      <PackageReference Include="EcsRx.Plugins.ReactiveSystems" Version="6.0.131" />
+      <PackageReference Include="EcsRx.Plugins.Views" Version="6.0.131" />
+      <PackageReference Include="EcsRx.ReactiveData" Version="4.1.97" />
       <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.8.0.2" />
       <PackageReference Include="Ninject" Version="3.3.4" />
+      <PackageReference Include="System.Reactive" Version="5.0.0" />
     </ItemGroup>
 	
 </Project>

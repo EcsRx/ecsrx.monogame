@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Reactive;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SystemsRx.MicroRx;
 
 namespace EcsRx.MonoGame.Wrappers
 {
