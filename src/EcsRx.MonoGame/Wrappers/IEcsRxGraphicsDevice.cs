@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -33,11 +34,11 @@ namespace EcsRx.MonoGame.Wrappers
         void DrawUserIndexedPrimitives<T>(PrimitiveType primitiveType, T[] vertexData, int vertexOffset, int numVertices, int[] indexData, int indexOffset, int primitiveCount, VertexDeclaration vertexDeclaration) where T : struct;
         void DrawInstancedPrimitives(PrimitiveType primitiveType, int baseVertex, int minVertexIndex, int numVertices, int startIndex, int primitiveCount, int instanceCount);
         void DrawInstancedPrimitives(PrimitiveType primitiveType, int baseVertex, int startIndex, int primitiveCount, int instanceCount);
+        void DrawInstancedPrimitives(PrimitiveType primitiveType, int baseVertex, int startIndex, int primitiveCount, int baseInstance, int instanceCount);
         void GetBackBufferData<T>(T[] data) where T : struct;
         void GetBackBufferData<T>(T[] data, int startIndex, int elementCount) where T : struct;
         void GetBackBufferData<T>(Rectangle? rect, T[] data, int startIndex, int elementCount) where T : struct;
-        void PlatformClear(ClearOptions options, Vector4 color, float depth, int stencil);
-        void PlatformPresent();
+        bool UseHalfPixelOffset { get; }
         TextureCollection VertexTextures { get; }
         SamplerStateCollection VertexSamplerStates { get; }
         TextureCollection Textures { get; }
@@ -45,9 +46,9 @@ namespace EcsRx.MonoGame.Wrappers
         bool IsDisposed { get; }
         bool IsContentLost { get; }
         GraphicsAdapter Adapter { get; }
-        GraphicsMetrics Metrics { get; }
-        GraphicsDebug GraphicsDebug { get; }
-        RasterizerState RasterizerState { get; }
+        GraphicsMetrics Metrics { get; set; }
+        GraphicsDebug GraphicsDebug { get; set; }
+        RasterizerState RasterizerState { get; set; }
         Color BlendFactor { get; set; }
         BlendState BlendState { get; set; }
         DepthStencilState DepthStencilState { get; set; }
@@ -59,6 +60,12 @@ namespace EcsRx.MonoGame.Wrappers
         Rectangle ScissorRectangle { get; set; }
         int RenderTargetCount { get; }
         IndexBuffer Indices { get; set; }
-        bool ResourcesLost { get; }
+        bool ResourcesLost { get; set; }
+        event EventHandler<EventArgs> DeviceLost;
+        event EventHandler<EventArgs> DeviceReset;
+        event EventHandler<EventArgs> DeviceResetting;
+        event EventHandler<ResourceCreatedEventArgs> ResourceCreated;
+        event EventHandler<ResourceDestroyedEventArgs> ResourceDestroyed;
+        event EventHandler<EventArgs> Disposing;
     }
 }

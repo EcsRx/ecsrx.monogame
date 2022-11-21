@@ -1,17 +1,5 @@
-﻿using System;
-using EcsRx.MonoGame.RogueLike2d.Game;
+﻿using EcsRx.MonoGame.RogueLike2d.Game;
 
-namespace EcsRx.MonoGame.RogueLike2d
-{
-    public static class Program
-    {
-        [STAThread]
-        static void Main()
-        {
-            // No longer need this, as we use applications with EcsRx
-            //using (var game = new Game1()) { game.Run(); }
-
-            using(new DemoApplication()){}
-        }
-    }
-}
+// We do not need the underlying Game object as we wrap it with an application
+using var game = new DemoApplication();
+game.StartApplication();
