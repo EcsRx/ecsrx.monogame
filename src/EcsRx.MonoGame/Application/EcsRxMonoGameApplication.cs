@@ -13,7 +13,7 @@ namespace EcsRx.MonoGame.Application
 {
     public abstract class EcsRxMonoGameApplication : EcsRxApplication, IDisposable
     {
-        public override IDependencyContainer Container { get; } = new NinjectDependencyContainer();
+        public override IDependencyRegistry DependencyRegistry { get; } = new NinjectDependencyRegistry();
 
         protected IEcsRxGame EcsRxGame { get; }
         protected IEcsRxContentManager EcsRxContentManager => EcsRxGame.EcsRxContentManager;
@@ -47,7 +47,7 @@ namespace EcsRx.MonoGame.Application
         protected override void LoadModules()
         {
             base.LoadModules();
-            Container.LoadModule(new MonoGameModule(EcsRxGame));
+            DependencyRegistry.LoadModule(new MonoGameModule(EcsRxGame));
         }
         
         public void Dispose()

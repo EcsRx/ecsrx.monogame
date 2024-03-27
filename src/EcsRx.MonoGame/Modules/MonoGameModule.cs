@@ -15,23 +15,23 @@ namespace EcsRx.MonoGame.Modules
         public MonoGameModule(IEcsRxGame ecsRxGame)
         { _ecsRxGame = ecsRxGame; }
 
-        public void Setup(IDependencyContainer container)
+        public void Setup(IDependencyRegistry registry)
         {
-            container.Bind<IEcsRxGame>(x => x.ToInstance(_ecsRxGame));
+            registry.Bind<IEcsRxGame>(x => x.ToInstance(_ecsRxGame));
 
-            container.Unbind<IUpdateScheduler>();
-            container.Bind<IUpdateScheduler>(x => x.ToInstance(_ecsRxGame));
-            container.Bind<IGameScheduler>(x => x.ToInstance(_ecsRxGame));
+            registry.Unbind<IUpdateScheduler>();
+            registry.Bind<IUpdateScheduler>(x => x.ToInstance(_ecsRxGame));
+            registry.Bind<IGameScheduler>(x => x.ToInstance(_ecsRxGame));
             
-            container.Bind<IEcsRxContentManager>(x => x.ToInstance(_ecsRxGame.EcsRxContentManager));
-            container.Bind<IEcsRxSpriteBatch>(x => x.ToInstance(_ecsRxGame.EcsRxSpriteBatch));
-            container.Bind<IEcsRxGraphicsDeviceManager>(x => x.ToInstance(_ecsRxGame.EcsRxGraphicsDeviceManager));
-            container.Bind<IEcsRxGraphicsDevice>(x => x.ToInstance(_ecsRxGame.EcsRxGraphicsDevice));
+            registry.Bind<IEcsRxContentManager>(x => x.ToInstance(_ecsRxGame.EcsRxContentManager));
+            registry.Bind<IEcsRxSpriteBatch>(x => x.ToInstance(_ecsRxGame.EcsRxSpriteBatch));
+            registry.Bind<IEcsRxGraphicsDeviceManager>(x => x.ToInstance(_ecsRxGame.EcsRxGraphicsDeviceManager));
+            registry.Bind<IEcsRxGraphicsDevice>(x => x.ToInstance(_ecsRxGame.EcsRxGraphicsDevice));
 
-            container.Bind<IRenderTarget2dRegistry, RenderTarget2dRegistry>();
-            container.Bind<IRenderTargetCubeRegistry, RenderTargetCubeRegistry>();
+            registry.Bind<IRenderTarget2dRegistry, RenderTarget2dRegistry>();
+            registry.Bind<IRenderTargetCubeRegistry, RenderTargetCubeRegistry>();
             
-            container.Bind<IConventionalSystemHandler, SpriteBatchSystemHandler>();
+            registry.Bind<IConventionalSystemHandler, SpriteBatchSystemHandler>();
         }
     }
 }
