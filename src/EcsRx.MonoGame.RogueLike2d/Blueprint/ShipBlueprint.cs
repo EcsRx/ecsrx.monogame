@@ -3,6 +3,7 @@ using EcsRx.Entities;
 using EcsRx.Extensions;
 using EcsRx.MonoGame.Components;
 using EcsRx.MonoGame.RogueLike2d.Game.Components;
+using EcsRx.Plugins.Transforms.Components;
 
 namespace EcsRx.MonoGame.RogueLike2d.Blueprint
 {
@@ -10,7 +11,7 @@ namespace EcsRx.MonoGame.RogueLike2d.Blueprint
     {
         public void Apply(IEntity entity)
         {
-            entity.AddComponents(new MoveableComponent(), new SpriteComponent(), new ViewComponent2D());
+            entity.AddComponents(new MoveableComponent(), new SpriteComponent(), new Transform2DComponent());
         }
     }
 }
