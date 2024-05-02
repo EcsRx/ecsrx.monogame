@@ -17,7 +17,8 @@ namespace EcsRx.MonoGame.Examples.Asteroids.Blueprint
                 RotationSpeed = 5.0f
             };
             
-            entity.AddComponents(new PlayerComponent(), handlingComponent, new ColliderComponent(), new ShootingComponent(), new MoveableComponent(), new SpriteComponent(), new Transform2DComponent());
+            entity.AddComponents(new PlayerComponent(), handlingComponent, new ColliderComponent(), 
+                new ShootingComponent(), new MoveableComponent(), new SpriteComponent(), new Transform2DComponent());
         }
     }
 }

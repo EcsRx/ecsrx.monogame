@@ -24,9 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EcsRx.Plugins.ReactiveSystems" Version="7.1.174" />
-    <PackageReference Include="EcsRx.Plugins.Transforms" Version="7.1.174" />
-    <PackageReference Include="EcsRx.Plugins.Views" Version="7.1.174" />
+    <PackageReference Include="EcsRx.Plugins.ReactiveSystems" Version="7.1.176" />
+    <PackageReference Include="EcsRx.Plugins.Transforms" Version="7.1.176" />
+    <PackageReference Include="EcsRx.Plugins.Views" Version="7.1.176" />
     <PackageReference Include="EcsRx.ReactiveData" Version="4.1.97" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />

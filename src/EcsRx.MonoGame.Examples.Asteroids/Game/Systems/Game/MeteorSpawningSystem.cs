@@ -2,6 +2,7 @@ using System;
 using System.Reactive.Linq;
 using EcsRx.Collections.Database;
 using EcsRx.Collections.Entity;
+using EcsRx.Extensions;
 using EcsRx.MonoGame.Examples.Asteroids.Blueprint;
 using SystemsRx.Systems.Conventional;
 
@@ -22,6 +23,6 @@ public class MeteorSpawningSystem : IReactiveSystem<long>
 
     public void Execute(long data)
     {
-        EntityCollection.CreateEntity(new MeteorBlueprint());
+        EntityCollection.CreateEntity<MeteorBlueprint>();
     }
 }

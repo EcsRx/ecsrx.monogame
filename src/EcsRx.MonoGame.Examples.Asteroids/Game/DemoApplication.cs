@@ -1,3 +1,4 @@
+using EcsRx.Extensions;
 using EcsRx.MonoGame.Application;
 using EcsRx.MonoGame.Examples.Asteroids.Blueprint;
 using EcsRx.Plugins.Transforms;
@@ -16,7 +17,7 @@ namespace EcsRx.MonoGame.Examples.Asteroids.Game
         {
             var defaultCollection = EntityDatabase.GetCollection();
 
-            var shipEntity = defaultCollection.CreateEntity(new ShipBlueprint());
+            var shipEntity = defaultCollection.CreateEntity<ShipBlueprint>();
         }
     }
 }

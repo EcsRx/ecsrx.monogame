@@ -42,7 +42,8 @@ namespace EcsRx.MonoGame.Examples.Asteroids.Game.Systems.Setup
             var centerPosition = new Vector2(GraphicsDevice.Viewport.Width/2.0f, GraphicsDevice.Viewport.Height/2.0f);
             var viewComponent = entity.GetComponent<Transform2DComponent>();
             viewComponent.Transform.Position = spawnPosition;
-            viewComponent.Transform.GetLookAt(centerPosition);
+            var lookAtRotation = viewComponent.Transform.GetLookAt(centerPosition);
+            viewComponent.Transform.Rotation = lookAtRotation;
 
             var moveableComponent = entity.GetComponent<MoveableComponent>();
             moveableComponent.MovementChange = Vector2.Normalize(-spawnPosition);

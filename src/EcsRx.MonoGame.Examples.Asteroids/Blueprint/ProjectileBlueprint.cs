@@ -7,22 +7,22 @@ using EcsRx.Plugins.Transforms.Components;
 
 namespace EcsRx.MonoGame.Examples.Asteroids.Blueprint;
 
-public class MeteorBlueprint : IBlueprint
+public class ProjectileBlueprint : IBlueprint
 {
     public void Apply(IEntity entity)
     {
         var handlingComponent = new HandlingComponent()
         {
-            MovementSpeed = 90f,
+            MovementSpeed = 500f,
             RotationSpeed = 4.0f
         };
-
+        
         var lifetimeComponent = new HasLifetimeComponent()
         {
-            MaxAliveTime = 10.0f
+            MaxAliveTime = 5.0f
         };
         
-        entity.AddComponents(handlingComponent, new MeteorComponent(), lifetimeComponent, 
+        entity.AddComponents(handlingComponent, new ProjectileComponent(), lifetimeComponent, 
             new MoveableComponent(), new ColliderComponent(), new SpriteComponent(), new Transform2DComponent());
     }
 }

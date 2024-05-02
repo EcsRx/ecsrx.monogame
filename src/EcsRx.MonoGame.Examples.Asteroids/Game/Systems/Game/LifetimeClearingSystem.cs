@@ -6,28 +6,25 @@ using EcsRx.Groups;
 using EcsRx.MonoGame.Examples.Asteroids.Game.Components;
 using EcsRx.Systems;
 using SystemsRx.Scheduling;
-using SystemsRx.Systems.Conventional;
 
 namespace EcsRx.MonoGame.Examples.Asteroids.Game.Systems.Game;
 
-public class MeteorClearingSystem : IBasicEntitySystem
+public class LifetimeClearingSystem : IBasicEntitySystem
 {
-    public float MaxAliveTime = 10.0f;
-    
-    public IGroup Group { get; } = new Group(typeof(MeteorComponent));
+    public IGroup Group { get; } = new Group(typeof(HasLifetimeComponent));
     public IEntityCollection EntityCollection { get; }
 
-    public MeteorClearingSystem(IEntityDatabase entityDatabase)
+    public LifetimeClearingSystem(IEntityDatabase entityDatabase)
     {
         EntityCollection = entityDatabase.GetCollection();
     }
 
     public void Process(IEntity entity, ElapsedTime elapsedTime)
     {
-        var meteorComponent = entity.GetComponent<MeteorComponent>();
-        meteorComponent.AliveTime += (float)elapsedTime.DeltaTime.TotalSeconds;
+        var lifetimeComponent = entity.GetComponent<HasLifetimeComponent>();
+        lifetimeComponent.AliveTime += (float)elapsedTime.DeltaTime.TotalSeconds;
 
-        if (meteorComponent.AliveTime >= MaxAliveTime)
+        if (lifetimeComponent.AliveTime >= lifetimeComponent.MaxAliveTime)
         { EntityCollection.RemoveEntity(entity.Id); }
     }
 }
