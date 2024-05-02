@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
-using SystemsRx.Extensions;
-using SystemsRx.Scheduling;
-using SystemsRx.Systems.Conventional;
 using EcsRx.MonoGame.Wrappers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using SystemsRx.Extensions;
+using SystemsRx.Scheduling;
+using SystemsRx.Systems.Conventional;
 
-namespace EcsRx.MonoGame.RogueLike2d.Game.Systems
+namespace EcsRx.MonoGame.Examples.Asteroids.Game.Systems.Infrastructure
 {
     public class LifecycleManagementSystem : IManualSystem
     {

@@ -1,8 +1,8 @@
 using EcsRx.MonoGame.Application;
-using EcsRx.MonoGame.RogueLike2d.Blueprint;
+using EcsRx.MonoGame.Examples.Asteroids.Blueprint;
 using EcsRx.Plugins.Transforms;
 
-namespace EcsRx.MonoGame.RogueLike2d.Game
+namespace EcsRx.MonoGame.Examples.Asteroids.Game
 {
     public class DemoApplication : EcsRxMonoGameApplication
     {

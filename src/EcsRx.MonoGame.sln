@@ -2,7 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcsRx.MonoGame", "EcsRx.MonoGame/EcsRx.MonoGame.csproj", "{8522D77D-CDD7-49CB-9F5D-201D84F9F5DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcsRx.MonoGame.RogueLike2d", "EcsRx.MonoGame.RogueLike2d\EcsRx.MonoGame.RogueLike2d.csproj", "{D977C485-BE9D-40C4-A01A-DAFD9EC70475}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcsRx.MonoGame.Examples.Asteroids", "EcsRx.MonoGame.Examples.Asteroids\EcsRx.MonoGame.Examples.Asteroids.csproj", "{D977C485-BE9D-40C4-A01A-DAFD9EC70475}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{367E727D-1F30-4607-AC01-7C8BC14D1738}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{3A9C700D-C5BA-428A-9ABC-3A18E15E7A76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +22,9 @@ Global
 		{D977C485-BE9D-40C4-A01A-DAFD9EC70475}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D977C485-BE9D-40C4-A01A-DAFD9EC70475}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D977C485-BE9D-40C4-A01A-DAFD9EC70475}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D977C485-BE9D-40C4-A01A-DAFD9EC70475} = {367E727D-1F30-4607-AC01-7C8BC14D1738}
+		{8522D77D-CDD7-49CB-9F5D-201D84F9F5DD} = {3A9C700D-C5BA-428A-9ABC-3A18E15E7A76}
 	EndGlobalSection
 EndGlobal
