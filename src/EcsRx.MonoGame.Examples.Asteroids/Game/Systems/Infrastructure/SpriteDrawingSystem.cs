@@ -1,3 +1,4 @@
+using Comora;
 using EcsRx.Entities;
 using EcsRx.Extensions;
 using EcsRx.Groups;
@@ -16,9 +17,16 @@ namespace EcsRx.MonoGame.Examples.Asteroids.Game.Systems.Infrastructure
     public class SpriteDrawingSystem : SpriteBatchSystem
     {
         public override IGroup Group { get; } =  new Group(typeof(SpriteComponent), typeof(Transform2DComponent));
+        
+        private readonly ICamera _camera;
 
-        public SpriteDrawingSystem(IEcsRxSpriteBatch ecsRxSpriteBatch) : base(ecsRxSpriteBatch)
-        {}
+        public SpriteDrawingSystem(IEcsRxSpriteBatch ecsRxSpriteBatch, ICamera camera) : base(ecsRxSpriteBatch)
+        {
+            _camera = camera;
+        }
+
+        public override void PreDraw()
+        { (EcsRxSpriteBatch as SpriteBatch).Begin(_camera); }
 
         public override void Process(IEntity entity)
         {

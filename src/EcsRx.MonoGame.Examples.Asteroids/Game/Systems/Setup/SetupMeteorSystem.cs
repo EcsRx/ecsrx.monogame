@@ -10,8 +10,8 @@ using EcsRx.Plugins.ReactiveSystems.Systems;
 using EcsRx.Plugins.Transforms.Components;
 using Microsoft.Xna.Framework.Graphics;
 using SystemsRx.Plugins.Transforms.Extensions;
+using SystemsRx.Plugins.Transforms.Models;
 using Vector2 = System.Numerics.Vector2;
-using VectorExtensions = EcsRx.MonoGame.Examples.Asteroids.Extensions.VectorExtensions;
 
 namespace EcsRx.MonoGame.Examples.Asteroids.Game.Systems.Setup
 {
@@ -38,32 +38,47 @@ namespace EcsRx.MonoGame.Examples.Asteroids.Game.Systems.Setup
             colliderComponent.Width = spriteComponent.Sprite.Width;
             colliderComponent.Height = spriteComponent.Sprite.Height;
 
-            var spawnPosition = GetRandomOffScreenPosition();
-            var centerPosition = new Vector2(GraphicsDevice.Viewport.Width/2.0f, GraphicsDevice.Viewport.Height/2.0f);
-            var viewComponent = entity.GetComponent<Transform2DComponent>();
-            viewComponent.Transform.Position = spawnPosition;
-            var lookAtRotation = viewComponent.Transform.GetLookAt(centerPosition);
-            viewComponent.Transform.Rotation = lookAtRotation;
-
+            var spawnPosition = GetRandomSpawnPosition();
+            var targetPosition = GetTargetPosition();
+            var transformComponent = entity.GetComponent<Transform2DComponent>();
+            var viewTransform = transformComponent.Transform;
+            
+            viewTransform.Position = spawnPosition;
+            
+            // This may look odd, but in MG apparently 0 rotation should be pointing right not up and its Y negative to move up
+            // with this in mind we offset the outputted rotation by 90 degrees (in radians) to make it work correctly
+            viewTransform.Rotation = viewTransform.GetLookAt(targetPosition, 1.5708f);
+            
             var moveableComponent = entity.GetComponent<MoveableComponent>();
-            moveableComponent.MovementChange = Vector2.Normalize(-spawnPosition);
+            moveableComponent.MovementChange = new Vector2(0, 1);
         }
-
-        public Vector2 GetRandomOffScreenPosition()
+        
+        public Vector2 GetRandomSpawnPosition()
         {
-            var bufferAmount = 30;
+            var bufferAmount = 64;
+            var spawnAreaWidth = GraphicsDevice.Viewport.Width/2 + bufferAmount;
+            var spawnAreaHeight = GraphicsDevice.Viewport.Height/2 + bufferAmount;
+            
             var isVerticalSpawn = Random.NextBool();
 
             if (isVerticalSpawn)
             {
-                var randomY = Random.Next(-bufferAmount, GraphicsDevice.Viewport.Height + bufferAmount);
-                var leftOrRight = Random.NextBool() ? GraphicsDevice.Viewport.Width + bufferAmount : -bufferAmount;
+                var randomY = Random.Next(-spawnAreaHeight, spawnAreaHeight);
+                var leftOrRight = Random.NextBool() ? -spawnAreaWidth : spawnAreaWidth;
                 return new Vector2(leftOrRight, randomY);
             }
             
-            var randomX = Random.Next(-bufferAmount, GraphicsDevice.Viewport.Width + bufferAmount);
-            var topOrBottom = Random.NextBool() ? GraphicsDevice.Viewport.Height + bufferAmount : -bufferAmount;
+            var randomX = Random.Next(-spawnAreaWidth, spawnAreaWidth);
+            var topOrBottom = Random.NextBool() ? -spawnAreaHeight : spawnAreaHeight;
             return new Vector2(randomX, topOrBottom);
+        }
+
+        public Vector2 GetTargetPosition()
+        {
+            var range = 128;
+            var varianceX = Random.Next(-range, range);
+            var varianceY = Random.Next(-range, range);
+            return new Vector2(varianceX, varianceY);
         }
     }
 }

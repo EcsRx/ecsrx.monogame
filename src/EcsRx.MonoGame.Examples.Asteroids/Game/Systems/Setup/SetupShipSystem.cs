@@ -37,7 +37,7 @@ namespace EcsRx.MonoGame.Examples.Asteroids.Game.Systems.Setup
             var screenCenterX = GraphicsDevice.Viewport.Width/2;
             var screenCenterY = GraphicsDevice.Viewport.Height/2;
             var viewComponent = entity.GetComponent<Transform2DComponent>();
-            viewComponent.Transform.Position = new Vector2(screenCenterX, screenCenterY);
+            viewComponent.Transform.Position = new Vector2(0, 0);
         }
     }
 }
