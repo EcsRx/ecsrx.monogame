@@ -10,7 +10,6 @@ using EcsRx.Plugins.ReactiveSystems.Systems;
 using EcsRx.Plugins.Transforms.Components;
 using Microsoft.Xna.Framework.Graphics;
 using SystemsRx.Plugins.Transforms.Extensions;
-using SystemsRx.Plugins.Transforms.Models;
 using Vector2 = System.Numerics.Vector2;
 
 namespace EcsRx.MonoGame.Examples.Asteroids.Game.Systems.Setup

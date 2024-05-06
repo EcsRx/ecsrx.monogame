@@ -21,7 +21,7 @@ public class MeteorSpawningSystem : IReactiveSystem<long>
 
     public IObservable<long> ReactTo() => Observable.Interval(TimeSpan.FromSeconds(5.0f));
 
-    public void Execute(long data)
+    public void Execute(long _)
     {
         EntityCollection.CreateEntity<MeteorBlueprint>();
     }
