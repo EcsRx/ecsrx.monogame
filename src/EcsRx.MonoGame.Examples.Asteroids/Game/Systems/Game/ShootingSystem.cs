@@ -47,11 +47,12 @@ public class ShootingSystem : IBasicEntitySystem
         var projectileEntity = EntityCollection.CreateEntity<ProjectileBlueprint>();
         var projectileTransformComponent = projectileEntity.GetComponent<Transform2DComponent>();
         var projectileTransform = projectileTransformComponent.Transform;
-
         projectileTransform.Position = shooterTransform.Position;
         projectileTransform.Rotation = shooterTransform.Rotation;
-
         projectileTransform.Position += projectileTransform.Forward() * 64.0f;
+
+        var projectileComponent = projectileEntity.GetComponent<ProjectileComponent>();
+        projectileComponent.PlayerEntityId = shooterEntity.Id;
         
         var moveableComponent = projectileEntity.GetComponent<MoveableComponent>();
         moveableComponent.MovementChange = new Vector2(0, 1); // No Strafe, Just Forwards

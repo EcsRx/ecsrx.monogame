@@ -26,7 +26,7 @@ namespace EcsRx.MonoGame.Examples.Asteroids.Game.Systems.Infrastructure
         }
 
         private void ClearScreen(ElapsedTime elapsedTime)
-        { _ecsRxGame.EcsRxGraphicsDevice.Clear(Color.CornflowerBlue); }
+        { _ecsRxGame.EcsRxGraphicsDevice.Clear(Color.Black); }
 
         public void StartSystem()
         {

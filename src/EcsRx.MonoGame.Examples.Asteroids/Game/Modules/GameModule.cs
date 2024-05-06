@@ -1,5 +1,9 @@
 using Comora;
+using EcsRx.Infrastructure.Extensions;
+using EcsRx.MonoGame.Examples.Asteroids.Game.Components;
+using EcsRx.MonoGame.Examples.Asteroids.Game.Computed;
 using EcsRx.MonoGame.Wrappers;
+using EcsRx.Plugins.Transforms.Components;
 using SystemsRx.Infrastructure.Dependencies;
 using SystemsRx.Infrastructure.Extensions;
 
@@ -13,6 +17,13 @@ public class GameModule : IDependencyModule
         {
             var ecsRxGraphicsDevice = resolver.Resolve<IEcsRxGraphicsDevice>();
             return new Camera(ecsRxGraphicsDevice.InternalDevice);
+        }));
+
+        registry.Bind<ComputedRuntimeColliders>(x => x.ToMethod(resolver =>
+        {
+            var observableGroup =
+                resolver.ResolveObservableGroup(typeof(ColliderComponent), typeof(Transform2DComponent));
+            return new ComputedRuntimeColliders(observableGroup);
         }));
     }
 }

@@ -5,6 +5,7 @@ using EcsRx.Groups;
 using EcsRx.MonoGame.Components;
 using EcsRx.MonoGame.Examples.Asteroids.Extensions;
 using EcsRx.MonoGame.Examples.Asteroids.Game.Components;
+using EcsRx.MonoGame.Examples.Asteroids.Types;
 using EcsRx.MonoGame.Wrappers;
 using EcsRx.Plugins.ReactiveSystems.Systems;
 using EcsRx.Plugins.Transforms.Components;
@@ -36,20 +37,30 @@ namespace EcsRx.MonoGame.Examples.Asteroids.Game.Systems.Setup
             var colliderComponent = entity.GetComponent<ColliderComponent>();
             colliderComponent.Width = spriteComponent.Sprite.Width;
             colliderComponent.Height = spriteComponent.Sprite.Height;
-
-            var spawnPosition = GetRandomSpawnPosition();
-            var targetPosition = GetTargetPosition();
-            var transformComponent = entity.GetComponent<Transform2DComponent>();
-            var viewTransform = transformComponent.Transform;
-            
-            viewTransform.Position = spawnPosition;
-            
-            // This may look odd, but in MG apparently 0 rotation should be pointing right not up and its Y negative to move up
-            // with this in mind we offset the outputted rotation by 90 degrees (in radians) to make it work correctly
-            viewTransform.Rotation = viewTransform.GetLookAt(targetPosition, 1.5708f);
             
             var moveableComponent = entity.GetComponent<MoveableComponent>();
             moveableComponent.MovementChange = new Vector2(0, 1);
+
+            SetupPositioning(entity);
+        }
+
+        public void SetupPositioning(IEntity entity)
+        {
+            var meteorComponent = entity.GetComponent<MeteorComponent>();
+
+            if (meteorComponent.Type == MeteorType.Big)
+            {
+                var transformComponent = entity.GetComponent<Transform2DComponent>();
+                var viewTransform = transformComponent.Transform;
+
+                var spawnPosition = GetRandomSpawnPosition();
+                var targetPosition = GetTargetPosition();
+                viewTransform.Position = spawnPosition;
+            
+                // This may look odd, but in MG apparently 0 rotation should be pointing right not up and its Y negative to move up
+                // with this in mind we offset the outputted rotation by 90 degrees (in radians) to make it work correctly
+                viewTransform.Rotation = viewTransform.GetLookAt(targetPosition, 1.5708f);
+            }
         }
         
         public Vector2 GetRandomSpawnPosition()

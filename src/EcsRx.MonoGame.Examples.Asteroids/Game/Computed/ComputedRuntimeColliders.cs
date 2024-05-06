@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework;
 
 namespace EcsRx.MonoGame.Examples.Asteroids.Game.Computed;
 
-public class ComputedRuntimeColliders : ComputedCollectionFromGroup<(int entityId, Rectangle collisionArea)>
+public class ComputedRuntimeColliders : ComputedCollectionFromGroup<Rectangle>
 {
     public ComputedRuntimeColliders(IObservableGroup internalObservableGroup) : base(internalObservableGroup)
     {}
@@ -21,11 +21,7 @@ public class ComputedRuntimeColliders : ComputedCollectionFromGroup<(int entityI
 
     public override bool ShouldTransform(IEntity entity) => true;
     
-    public override (int entityId, Rectangle collisionArea) Transform(IEntity entity)
-    {
-        var collisionArea = GenerateCollisionArea(entity);
-        return (entity.Id, collisionArea);
-    }
+    public override Rectangle Transform(IEntity entity) => GenerateCollisionArea(entity);
     
     public Rectangle GenerateCollisionArea(IEntity entity)
     {
