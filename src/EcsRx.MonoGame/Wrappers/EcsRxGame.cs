@@ -43,7 +43,9 @@ namespace EcsRx.MonoGame.Wrappers
             EcsRxContentManager = new EcsRxContentManager(Content);
             IsMouseVisible = true;
 
-            GameUnloading = Observable.FromEventPattern<EventArgs>(x => Exiting += x, x => Exiting -= x)
+            GameUnloading = Observable.FromEventPattern<EventArgs>(
+                    x => Exiting += x, 
+                    x => Exiting -= x)
                 .FirstAsync()
                 .Select(x => Unit.Default);
         }

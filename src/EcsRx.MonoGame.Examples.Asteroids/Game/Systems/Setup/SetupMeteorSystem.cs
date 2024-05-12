@@ -41,26 +41,21 @@ namespace EcsRx.MonoGame.Examples.Asteroids.Game.Systems.Setup
             var moveableComponent = entity.GetComponent<MoveableComponent>();
             moveableComponent.MovementChange = new Vector2(0, 1);
 
-            SetupPositioning(entity);
+            SetupTransform(entity);
         }
 
-        public void SetupPositioning(IEntity entity)
+        public void SetupTransform(IEntity entity)
         {
             var meteorComponent = entity.GetComponent<MeteorComponent>();
+            var transformComponent = entity.GetComponent<Transform2DComponent>();
+            var viewTransform = transformComponent.Transform;
+            viewTransform.Scale = Vector2.One / (int)meteorComponent.Type;
+            if (meteorComponent.Type != MeteorType.Big) { return; }
 
-            if (meteorComponent.Type == MeteorType.Big)
-            {
-                var transformComponent = entity.GetComponent<Transform2DComponent>();
-                var viewTransform = transformComponent.Transform;
-
-                var spawnPosition = GetRandomSpawnPosition();
-                var targetPosition = GetTargetPosition();
-                viewTransform.Position = spawnPosition;
-            
-                // This may look odd, but in MG apparently 0 rotation should be pointing right not up and its Y negative to move up
-                // with this in mind we offset the outputted rotation by 90 degrees (in radians) to make it work correctly
-                viewTransform.Rotation = viewTransform.GetLookAt(targetPosition, 1.5708f);
-            }
+            var spawnPosition = GetRandomSpawnPosition();
+            var targetPosition = GetTargetPosition();
+            viewTransform.Position = spawnPosition;
+            viewTransform.Rotation = viewTransform.MGGetLookAt(targetPosition);
         }
         
         public Vector2 GetRandomSpawnPosition()

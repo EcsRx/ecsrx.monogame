@@ -1,3 +1,5 @@
+using System;
+using System.Reactive.Linq;
 using EcsRx.Collections.Database;
 using EcsRx.Collections.Entity;
 using EcsRx.Entities;
@@ -13,9 +15,11 @@ public class LifetimeClearingSystem : IBasicEntitySystem
 {
     public IGroup Group { get; } = new Group(typeof(HasLifetimeComponent));
     public IEntityCollection EntityCollection { get; }
+    public IUpdateScheduler UpdateScheduler { get; }
 
-    public LifetimeClearingSystem(IEntityDatabase entityDatabase)
+    public LifetimeClearingSystem(IEntityDatabase entityDatabase, IUpdateScheduler updateScheduler)
     {
+        UpdateScheduler = updateScheduler;
         EntityCollection = entityDatabase.GetCollection();
     }
 
@@ -25,6 +29,10 @@ public class LifetimeClearingSystem : IBasicEntitySystem
         lifetimeComponent.AliveTime += (float)elapsedTime.DeltaTime.TotalSeconds;
 
         if (lifetimeComponent.AliveTime >= lifetimeComponent.MaxAliveTime)
-        { EntityCollection.RemoveEntity(entity.Id); }
+        {
+            UpdateScheduler.OnPostUpdate.Take(1).Subscribe(_ => {
+                EntityCollection.RemoveEntity(entity.Id);
+            });
+        }
     }
 }
