@@ -38,11 +38,17 @@ public class MeteorHitEventSystem : IReactToEventSystem<MeteorCollidedWithProjec
         var playerComponent = owningShip.GetComponent<PlayerComponent>();
         playerComponent.Score += CalculateScoreFor(meteorComponent);
 
+        SpawnNewMeteorsIfNeeded(eventData.Meteor);
+       
         UpdateScheduler.OnPostUpdate.Take(1).Subscribe(_ =>
         {
-            SpawnNewMeteorsIfNeeded(eventData.Meteor);
-            EntityCollection.RemoveEntity(eventData.Meteor.Id);
-            EntityCollection.RemoveEntity(eventData.Projectile.Id);
+            // The Lifecycle system may have removed these during the update cycle
+            // so we need to confirm they still exist
+            if(EntityCollection.ContainsEntity(eventData.Meteor.Id))
+            { EntityCollection.RemoveEntity(eventData.Meteor.Id); }
+            
+            if(EntityCollection.ContainsEntity(eventData.Projectile.Id))
+            { EntityCollection.RemoveEntity(eventData.Projectile.Id); }
         });
     }
 
