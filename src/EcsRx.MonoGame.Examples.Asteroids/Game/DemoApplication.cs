@@ -1,6 +1,6 @@
 using EcsRx.Extensions;
 using EcsRx.MonoGame.Application;
-using EcsRx.MonoGame.Examples.Asteroids.Blueprint;
+using EcsRx.MonoGame.Examples.Asteroids.Game.Blueprint;
 using EcsRx.MonoGame.Examples.Asteroids.Game.Modules;
 using EcsRx.Plugins.Computeds;
 using EcsRx.Plugins.Transforms;

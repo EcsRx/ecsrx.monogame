@@ -3,7 +3,6 @@ using EcsRx.Extensions;
 using EcsRx.Groups;
 using EcsRx.MonoGame.Components;
 using EcsRx.MonoGame.Examples.Asteroids.Game.Components;
-using EcsRx.MonoGame.Examples.Asteroids.Groups;
 using EcsRx.MonoGame.Wrappers;
 using EcsRx.Plugins.ReactiveSystems.Systems;
 using EcsRx.Plugins.Transforms.Components;

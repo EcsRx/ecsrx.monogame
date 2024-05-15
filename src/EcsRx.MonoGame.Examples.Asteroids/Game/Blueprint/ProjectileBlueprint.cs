@@ -5,7 +5,7 @@ using EcsRx.MonoGame.Components;
 using EcsRx.MonoGame.Examples.Asteroids.Game.Components;
 using EcsRx.Plugins.Transforms.Components;
 
-namespace EcsRx.MonoGame.Examples.Asteroids.Blueprint;
+namespace EcsRx.MonoGame.Examples.Asteroids.Game.Blueprint;
 
 public class ProjectileBlueprint : IBlueprint
 {

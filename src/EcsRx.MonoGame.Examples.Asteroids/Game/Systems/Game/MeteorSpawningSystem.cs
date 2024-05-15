@@ -3,7 +3,6 @@ using System.Reactive.Linq;
 using EcsRx.Collections.Database;
 using EcsRx.Collections.Entity;
 using EcsRx.Extensions;
-using EcsRx.MonoGame.Examples.Asteroids.Blueprint;
 using EcsRx.MonoGame.Examples.Asteroids.Game.Blueprint;
 using SystemsRx.Systems.Conventional;
 

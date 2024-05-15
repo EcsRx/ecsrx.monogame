@@ -4,7 +4,7 @@ using EcsRx.Collections.Entity;
 using EcsRx.Entities;
 using EcsRx.Extensions;
 using EcsRx.Groups;
-using EcsRx.MonoGame.Examples.Asteroids.Blueprint;
+using EcsRx.MonoGame.Examples.Asteroids.Game.Blueprint;
 using EcsRx.MonoGame.Examples.Asteroids.Game.Components;
 using EcsRx.Plugins.Transforms.Components;
 using EcsRx.Systems;
