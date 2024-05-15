@@ -8,7 +8,7 @@ using SystemsRx.Infrastructure.Extensions;
 
 namespace EcsRx.MonoGame.Examples.Asteroids.Game
 {
-    public class DemoApplication : EcsRxMonoGameApplication
+    public class AsteroidsApplication : EcsRxMonoGameApplication
     {
         protected override void LoadModules()
         {
