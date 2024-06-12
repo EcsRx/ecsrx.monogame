@@ -1,12 +1,11 @@
 ﻿using System;
 using SystemsRx.Scheduling;
 
-namespace EcsRx.MonoGame
+namespace EcsRx.MonoGame;
+
+public interface IGameScheduler : IUpdateScheduler
 {
-    public interface IGameScheduler : IUpdateScheduler
-    {
-        IObservable<ElapsedTime> OnPreRender { get; }
-        IObservable<ElapsedTime> OnRender { get; }
-        IObservable<ElapsedTime> OnPostRender { get; }
-    }
+    IObservable<ElapsedTime> OnPreRender { get; }
+    IObservable<ElapsedTime> OnRender { get; }
+    IObservable<ElapsedTime> OnPostRender { get; }
 }
