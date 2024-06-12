@@ -1,10 +1,9 @@
 using Microsoft.Xna.Framework;
 
-namespace EcsRx.MonoGame.Wrappers
+namespace EcsRx.MonoGame.Wrappers;
+
+public class EcsRxGraphicsDeviceManager : GraphicsDeviceManager, IEcsRxGraphicsDeviceManager
 {
-    public class EcsRxGraphicsDeviceManager : GraphicsDeviceManager, IEcsRxGraphicsDeviceManager
-    {
-        public EcsRxGraphicsDeviceManager(Game game) : base(game)
-        {}
-    }
+    public EcsRxGraphicsDeviceManager(Game game) : base(game)
+    {}
 }

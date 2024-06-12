@@ -8,38 +8,37 @@ using SystemsRx.Extensions;
 using SystemsRx.Scheduling;
 using SystemsRx.Systems.Conventional;
 
-namespace EcsRx.MonoGame.Examples.Asteroids.Game.Systems.Infrastructure
+namespace EcsRx.MonoGame.Examples.Asteroids.Game.Systems.Infrastructure;
+
+public class LifecycleManagementSystem : IManualSystem
 {
-    public class LifecycleManagementSystem : IManualSystem
+    private readonly IEcsRxGame _ecsRxGame;
+    private readonly List<IDisposable> _subscriptions = new List<IDisposable>();
+
+    public LifecycleManagementSystem(IEcsRxGame ecsRxGame)
+    { _ecsRxGame = ecsRxGame; }
+
+    private void CheckIfGameShouldQuit(ElapsedTime elapsedTime)
     {
-        private readonly IEcsRxGame _ecsRxGame;
-        private readonly List<IDisposable> _subscriptions = new List<IDisposable>();
+        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || 
+            Keyboard.GetState().IsKeyDown(Keys.Escape))
+        { _ecsRxGame.Exit(); }
+    }
 
-        public LifecycleManagementSystem(IEcsRxGame ecsRxGame)
-        { _ecsRxGame = ecsRxGame; }
+    private void ClearScreen(ElapsedTime elapsedTime)
+    { _ecsRxGame.EcsRxGraphicsDevice.Clear(Color.DarkSlateGray); }
 
-        private void CheckIfGameShouldQuit(ElapsedTime elapsedTime)
-        {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || 
-                Keyboard.GetState().IsKeyDown(Keys.Escape))
-            { _ecsRxGame.Exit(); }
-        }
+    public void StartSystem()
+    {
+        var quitSubscriptions = _ecsRxGame.OnUpdate.Subscribe(CheckIfGameShouldQuit);
+        var clearSubscriptions = _ecsRxGame.OnPreRender.Subscribe(ClearScreen);
+        _subscriptions.Add(quitSubscriptions);
+        _subscriptions.Add(clearSubscriptions);
+    }
 
-        private void ClearScreen(ElapsedTime elapsedTime)
-        { _ecsRxGame.EcsRxGraphicsDevice.Clear(Color.DarkSlateGray); }
-
-        public void StartSystem()
-        {
-            var quitSubscriptions = _ecsRxGame.OnUpdate.Subscribe(CheckIfGameShouldQuit);
-            var clearSubscriptions = _ecsRxGame.OnPreRender.Subscribe(ClearScreen);
-            _subscriptions.Add(quitSubscriptions);
-            _subscriptions.Add(clearSubscriptions);
-        }
-
-        public void StopSystem()
-        {
-            _subscriptions.DisposeAll();
-            _subscriptions.Clear();
-        }
+    public void StopSystem()
+    {
+        _subscriptions.DisposeAll();
+        _subscriptions.Clear();
     }
 }

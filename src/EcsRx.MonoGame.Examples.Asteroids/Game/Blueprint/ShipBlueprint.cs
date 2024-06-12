@@ -5,20 +5,19 @@ using EcsRx.MonoGame.Components;
 using EcsRx.MonoGame.Examples.Asteroids.Game.Components;
 using EcsRx.Plugins.Transforms.Components;
 
-namespace EcsRx.MonoGame.Examples.Asteroids.Game.Blueprint
+namespace EcsRx.MonoGame.Examples.Asteroids.Game.Blueprint;
+
+public class ShipBlueprint : IBlueprint
 {
-    public class ShipBlueprint : IBlueprint
+    public void Apply(IEntity entity)
     {
-        public void Apply(IEntity entity)
+        var handlingComponent = new HandlingComponent()
         {
-            var handlingComponent = new HandlingComponent()
-            {
-                MovementSpeed = 100f,
-                RotationSpeed = 5.0f
-            };
+            MovementSpeed = 100f,
+            RotationSpeed = 5.0f
+        };
             
-            entity.AddComponents(new PlayerComponent(), handlingComponent, new ColliderComponent(), 
-                new ShootingComponent(), new MoveableComponent(), new SpriteComponent(), new Transform2DComponent());
-        }
+        entity.AddComponents(new PlayerComponent(), handlingComponent, new ColliderComponent(), 
+            new ShootingComponent(), new MoveableComponent(), new SpriteComponent(), new Transform2DComponent());
     }
 }

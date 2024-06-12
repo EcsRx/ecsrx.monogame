@@ -1,7 +1,6 @@
-namespace EcsRx.MonoGame.Extensions
+namespace EcsRx.MonoGame.Extensions;
+
+public static class EcsRxMonoGameApplicationExtensions
 {
-    public static class EcsRxMonoGameApplicationExtensions
-    {
         
-    }
 }

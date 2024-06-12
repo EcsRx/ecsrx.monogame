@@ -5,26 +5,25 @@ using EcsRx.MonoGame.Examples.Asteroids.Game.Modules;
 using EcsRx.Plugins.Transforms;
 using SystemsRx.Infrastructure.Extensions;
 
-namespace EcsRx.MonoGame.Examples.Asteroids.Game
+namespace EcsRx.MonoGame.Examples.Asteroids.Game;
+
+public class AsteroidsApplication : EcsRxMonoGameApplication
 {
-    public class AsteroidsApplication : EcsRxMonoGameApplication
+    protected override void LoadModules()
     {
-        protected override void LoadModules()
-        {
-            base.LoadModules();
-            DependencyRegistry.LoadModule<GameModule>();
-        }
+        base.LoadModules();
+        DependencyRegistry.LoadModule<GameModule>();
+    }
 
-        protected override void LoadPlugins()
-        {
-            base.LoadPlugins();
-            RegisterPlugin(new TransformsPlugin());
-        }
+    protected override void LoadPlugins()
+    {
+        base.LoadPlugins();
+        RegisterPlugin(new TransformsPlugin());
+    }
 
-        protected override void ApplicationStarted()
-        {
-            var defaultCollection = EntityDatabase.GetCollection();
-            defaultCollection.CreateEntity<ShipBlueprint>();
-        }
+    protected override void ApplicationStarted()
+    {
+        var defaultCollection = EntityDatabase.GetCollection();
+        defaultCollection.CreateEntity<ShipBlueprint>();
     }
 }

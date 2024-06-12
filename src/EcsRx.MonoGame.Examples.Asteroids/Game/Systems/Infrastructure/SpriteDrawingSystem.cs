@@ -11,31 +11,30 @@ using Microsoft.Xna.Framework.Graphics;
 using SystemsRx.Attributes;
 using SystemsRx.Types;
 
-namespace EcsRx.MonoGame.Examples.Asteroids.Game.Systems.Infrastructure
+namespace EcsRx.MonoGame.Examples.Asteroids.Game.Systems.Infrastructure;
+
+[Priority(PriorityTypes.SuperLow)]
+public class SpriteDrawingSystem : SpriteBatchSystem
 {
-    [Priority(PriorityTypes.SuperLow)]
-    public class SpriteDrawingSystem : SpriteBatchSystem
-    {
-        public override IGroup Group { get; } =  new Group(typeof(SpriteComponent), typeof(Transform2DComponent));
+    public override IGroup Group { get; } =  new Group(typeof(SpriteComponent), typeof(Transform2DComponent));
         
-        private readonly ICamera _camera;
+    private readonly ICamera _camera;
 
-        public SpriteDrawingSystem(IEcsRxSpriteBatch ecsRxSpriteBatch, ICamera camera) : base(ecsRxSpriteBatch)
-        {
-            _camera = camera;
-        }
+    public SpriteDrawingSystem(IEcsRxSpriteBatch ecsRxSpriteBatch, ICamera camera) : base(ecsRxSpriteBatch)
+    {
+        _camera = camera;
+    }
 
-        public override void PreDraw()
-        { (EcsRxSpriteBatch as SpriteBatch).Begin(_camera); }
+    public override void PreDraw()
+    { (EcsRxSpriteBatch as SpriteBatch).Begin(_camera); }
 
-        public override void Process(IEntity entity)
-        {
-            var spriteComponent = entity.GetComponent<SpriteComponent>();
-            var transformComponent = entity.GetComponent<Transform2DComponent>();
-            var transform = transformComponent.Transform;
+    public override void Process(IEntity entity)
+    {
+        var spriteComponent = entity.GetComponent<SpriteComponent>();
+        var transformComponent = entity.GetComponent<Transform2DComponent>();
+        var transform = transformComponent.Transform;
             
-            var origin = new Vector2(spriteComponent.Sprite.Width / 2f, spriteComponent.Sprite.Height / 2f);
-            EcsRxSpriteBatch.Draw(spriteComponent.Sprite, transform.Position, null, Color.White, transform.Rotation, origin, transform.Scale, SpriteEffects.None, 0);
-        }
+        var origin = new Vector2(spriteComponent.Sprite.Width / 2f, spriteComponent.Sprite.Height / 2f);
+        EcsRxSpriteBatch.Draw(spriteComponent.Sprite, transform.Position, null, Color.White, transform.Rotation, origin, transform.Scale, SpriteEffects.None, 0);
     }
 }
