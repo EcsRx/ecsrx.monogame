@@ -7,10 +7,9 @@ using EcsRx.MonoGame.Examples.Asteroids.Extensions;
 using EcsRx.MonoGame.Examples.Asteroids.Game.Components;
 using EcsRx.MonoGame.Examples.Asteroids.Types;
 using EcsRx.MonoGame.Wrappers;
-using EcsRx.Plugins.ReactiveSystems.Systems;
 using EcsRx.Plugins.Transforms.Components;
+using EcsRx.Systems;
 using Microsoft.Xna.Framework.Graphics;
-using SystemsRx.Plugins.Transforms.Extensions;
 using Vector2 = System.Numerics.Vector2;
 
 namespace EcsRx.MonoGame.Examples.Asteroids.Game.Systems.Setup

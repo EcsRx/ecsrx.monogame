@@ -4,7 +4,6 @@ using SystemsRx.Infrastructure.Dependencies;
 using EcsRx.Infrastructure;
 using EcsRx.MonoGame.Modules;
 using EcsRx.MonoGame.Wrappers;
-using EcsRx.Plugins.ReactiveSystems;
 using EcsRx.Plugins.Views;
 using EcsRx.Plugins.Views.Extensions;
 using SystemsRx.Infrastructure.Ninject;
@@ -40,7 +39,6 @@ namespace EcsRx.MonoGame.Application
 
         protected override void LoadPlugins()
         {
-            RegisterPlugin(new ReactiveSystemsPlugin());
             RegisterPlugin(new ViewsPlugin());
         }
 

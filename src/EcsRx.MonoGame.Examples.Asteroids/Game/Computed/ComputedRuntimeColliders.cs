@@ -1,11 +1,11 @@
 using System;
 using System.Reactive.Linq;
+using EcsRx.Computeds.Collections;
 using EcsRx.Entities;
 using EcsRx.Extensions;
 using EcsRx.Groups.Observable;
 using EcsRx.MonoGame.Examples.Asteroids.Extensions;
 using EcsRx.MonoGame.Examples.Asteroids.Game.Components;
-using EcsRx.Plugins.Computeds.Collections;
 using EcsRx.Plugins.Transforms.Components;
 using Microsoft.Xna.Framework;
 

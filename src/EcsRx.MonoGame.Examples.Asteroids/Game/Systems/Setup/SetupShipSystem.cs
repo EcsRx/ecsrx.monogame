@@ -4,8 +4,8 @@ using EcsRx.Groups;
 using EcsRx.MonoGame.Components;
 using EcsRx.MonoGame.Examples.Asteroids.Game.Components;
 using EcsRx.MonoGame.Wrappers;
-using EcsRx.Plugins.ReactiveSystems.Systems;
 using EcsRx.Plugins.Transforms.Components;
+using EcsRx.Systems;
 using Microsoft.Xna.Framework.Graphics;
 using Vector2 = System.Numerics.Vector2;
 
